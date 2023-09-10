@@ -8,6 +8,45 @@ import LogoSkiFamily from "~/public/images/projects/ski_family_menu.b00303521a8d
 import Arrow from "~/public/images/projects/rotated-right-arrow-svgrepo-com.svg";
 import Link from "next/link";
 
+const projects = [
+  {
+    title: "EMOVIN",
+    description:
+      "Initially built with Shopify, our needs evolved and we decided to rebuild our own frontend with Next.js, keeping the Shopify backend, thanks to the Storefront API.",
+    logo: LogoEmovin,
+    link: "/",
+    github: "https://github.com/keyservlad/shopify-next-js",
+    live: "https://www.emovin.fr",
+  },
+  {
+    title: "CHIRP",
+    description:
+      "Experienced with various B2B products, including Shopify, WP. Create appealing solutions for business clients.",
+    logo: LogoTwitter,
+    link: "/",
+    github: "https://github.com/keyservlad/twitter-emojis-t3-stack",
+    live: "https://twitter-emojis-five.vercel.app/",
+  },
+  {
+    title: "PORTFOLIO",
+    description:
+      "Experienced with various B2B products, including Shopify, WP. Create appealing solutions for business clients.",
+    logo: LogoAG,
+    link: "/",
+    github: "https://github.com/keyservlad/arnaud-guilhamat-portfolio",
+    live: undefined,
+  },
+  {
+    title: "SKI FAMILY",
+    description:
+      "Experienced with various B2B products, including Shopify, WP. Create appealing solutions for business clients.",
+    logo: LogoSkiFamily,
+    link: "/",
+    github: undefined,
+    live: "/",
+  },
+];
+
 const Projects = () => {
   return (
     <div className="bg-[#f7f7fa]">
@@ -58,8 +97,8 @@ const Projects = () => {
         </div>
         <div className="align-center mb-6 mt-0 flex flex-row justify-between gap-x-8">
           <div className="mx-4 grid w-full grid-cols-2 gap-16">
-            {[1, 2, 3, 4].map((item, index) => (
-              <ProjectCard key={index} />
+            {projects.map((item, index) => (
+              <ProjectCard key={index} project={item} />
             ))}
           </div>
         </div>
@@ -80,15 +119,26 @@ const AppleIconsAbsolute = () => {
   );
 };
 
-const ProjectCard = () => {
+interface ProjectCardProps {
+  project: {
+    title: string;
+    description: string;
+    logo: string;
+    link: string;
+    github: string | undefined;
+    live: string | undefined;
+  };
+}
+
+const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="align-start flex flex-col gap-3">
-      <div className="align-center relative flex aspect-video w-full max-w-full justify-center rounded-lg border border-slate-200 align-middle bg-white">
+      <div className="align-center relative flex aspect-video w-full max-w-full justify-center rounded-lg border border-slate-200 bg-white align-middle">
         <AppleIconsAbsolute />
         <div className="relative m-auto">
           <Image
-            src={LogoEmovin}
-            alt="logo emovin"
+            src={project.logo}
+            alt={`logo de ${project.title}`}
             width={150}
             height={150}
             objectFit="contain"
@@ -97,13 +147,10 @@ const ProjectCard = () => {
         </div>
       </div>
       <div className="">
-        <h4>EMOVIN</h4>
-        <p>
-          Experienced with various B2B products, including Shopify, WP. Create
-          appealing solutions for business clients.
-        </p>
+        <h4>{project.title}</h4>
+        <p>{project.description}</p>
         <Link
-          href={"/"}
+          href={project.link}
           className="align-center relative flex max-w-full items-center gap-x-[2px] pr-4 text-sm font-bold text-black"
         >
           <div>Check it out</div>

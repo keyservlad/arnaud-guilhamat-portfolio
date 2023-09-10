@@ -14,7 +14,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Head>
-        <title>Arnaud Guilhamat's portfolio</title>
+        <title>Arnaud Guilhamat&#39;s portfolio</title>
         <meta name="description" content="Arnaud Guilhamat's portfolio" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
