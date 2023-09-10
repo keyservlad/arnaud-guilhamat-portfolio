@@ -1,12 +1,24 @@
 import Image from "next/image";
 import React from "react";
 import ImageProjects from "~/public/images/projects/projects-image.png";
+
 import LogoEmovin from "~/public/images/projects/logo_emovin-05.c2c25522.svg";
 import LogoTwitter from "~/public/images/projects/1f426.png";
 import LogoAG from "~/public/images/logos/LOGO-GA-AG-shadows-lines.svg";
 import LogoSkiFamily from "~/public/images/projects/ski_family_menu.b00303521a8d.svg";
 import Arrow from "~/public/images/projects/rotated-right-arrow-svgrepo-com.svg";
 import Link from "next/link";
+
+interface ProjectCardProps {
+  project: {
+    title: string;
+    description: string;
+    logo: any;
+    link: string;
+    github: string | undefined;
+    live: string | undefined;
+  };
+}
 
 const projects = [
   {
@@ -118,17 +130,6 @@ const AppleIconsAbsolute = () => {
     </div>
   );
 };
-
-interface ProjectCardProps {
-  project: {
-    title: string;
-    description: string;
-    logo: string;
-    link: string;
-    github: string | undefined;
-    live: string | undefined;
-  };
-}
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
