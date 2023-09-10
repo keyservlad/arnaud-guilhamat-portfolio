@@ -9,6 +9,9 @@ import LogoSkiFamily from "~/public/images/projects/ski_family_menu.b00303521a8d
 import Arrow from "~/public/images/projects/rotated-right-arrow-svgrepo-com.svg";
 import Link from "next/link";
 
+import GithubImage from "~/public/images/projects/png-transparent-github-computer-icons-github-logo-monochrome-head-thumbnail.png";
+import SVGArrow from "~/public/images/projects/arrow-circle-up-right-svgrepo-com.svg";
+
 interface ProjectCardProps {
   project: {
     title: string;
@@ -33,7 +36,7 @@ const projects = [
   {
     title: "CHIRP",
     description:
-      "Experienced with various B2B products, including Shopify, WP. Create appealing solutions for business clients.",
+      "Twitter but only with emojis 🐦... fullstack project built with the T3 Stack with Next.js, Typescript, tRPC, Prisma, Tailwindcss, NextAuth. Hosted on Planetscale & Vercel",
     logo: LogoTwitter,
     link: "/",
     github: "https://github.com/keyservlad/twitter-emojis-t3-stack",
@@ -55,7 +58,7 @@ const projects = [
     logo: LogoSkiFamily,
     link: "/",
     github: undefined,
-    live: "/",
+    live: "https://www.ski-family.fr/fr/",
   },
 ];
 
@@ -74,7 +77,11 @@ const Projects = () => {
               my never ending thirst for learning always makes me want to build
               new projects!
             </p>
-            <button className="flex cursor-pointer self-start rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black">
+            <Link
+              target="_blank"
+              href="https://github.com/keyservlad"
+              className="flex cursor-pointer self-start rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black"
+            >
               See other projects
               <svg
                 width="20"
@@ -93,7 +100,7 @@ const Projects = () => {
                   fill="black"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
           <div className="relative inline-block max-w-full align-middle">
             <Image
@@ -147,9 +154,43 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           />
         </div>
       </div>
-      <div className="">
+      <div className="flex flex-row justify-between">
         <h4>{project.title}</h4>
-        <p>{project.description}</p>
+        <div className="flex flex-row">
+          {project.github && (
+            <div className="relative rounded-full">
+              <Link target="_blank" href={project.github}>
+                <Image
+                  alt="github logo"
+                  src={GithubImage}
+                  width={50}
+                  height={50}
+                  objectFit="contain"
+                  objectPosition="center"
+                  placeholder="blur"
+                />
+              </Link>
+            </div>
+          )}
+          {project.live && (
+            <div className="relative rounded-full">
+              <Link target="_blank" href={project.live}>
+                <Image
+                  alt="open link logo"
+                  src={SVGArrow}
+                  width={50}
+                  height={50}
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
+      <p>{project.description}</p>
+
+      <div className="">
         <Link
           href={project.link}
           className="align-center relative flex max-w-full items-center gap-x-[2px] pr-4 text-sm font-bold text-black"
