@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  html {
+    @apply font-montserat box-border text-base font-light leading-5 text-[#333];
+  }
+
+  h1 {
+    @apply my-5 text-[2.75rem] font-bold leading-10;
+  }
+
+  h2 {
+    @apply my-5 text-center text-[2rem] font-bold leading-9;
+  }
+
+  h4 {
+    @apply my-[10px] text-lg font-bold leading-6;
+  }
+
+  p {
+    @apply mb-[10px];
+  }
+}
