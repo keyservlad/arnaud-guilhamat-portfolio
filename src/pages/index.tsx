@@ -14,12 +14,8 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
-      try {
-        const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        const locomotiveScroll = new LocomotiveScroll();
-      } catch (e) {
-        console.log(e);
-      }
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
 
       setTimeout(() => {
         setIsLoading(false);
