@@ -10,7 +10,7 @@
         fill: none;
         stroke: #000;
         stroke-miterlimit: 10;
-        stroke-width: 52px;
+        strokeWidth: 52px;
       }
 
       .cls-3 {

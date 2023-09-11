@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -8,28 +9,31 @@ const Header = () => {
         <div className="">
           <Logo />
         </div>
-        <nav className="flex flex-row items-center">
-          <a
-            className="mx-1 inline-block cursor-pointer px-4 py-8 font-bold"
+        <nav className="flex h-full flex-row items-center">
+          <Link
+            className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 font-bold hover:border-black"
             href="#"
           >
             Home
-          </a>
-          <a className="mx-1 inline-block cursor-pointer px-4 py-8" href="#">
+          </Link>
+          <Link
+            className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 hover:border-black"
+            href="#"
+          >
             My Works
-          </a>
-          <a className="mx-1 inline-block cursor-pointer px-4 py-8" href="#">
-            Education
-          </a>
-          <a className="mx-1 inline-block cursor-pointer px-4 py-8" href="#">
+          </Link>
+          <Link
+            className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 hover:border-black"
+            href="#"
+          >
             About Me
-          </a>
-          <a
-            className="ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5"
+          </Link>
+          <Link
+            className="hover:shadow-custom ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white"
             href="#"
           >
             Contact Me
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

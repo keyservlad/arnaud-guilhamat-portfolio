@@ -80,7 +80,7 @@ const Projects = () => {
             <Link
               target="_blank"
               href="https://github.com/keyservlad"
-              className="flex cursor-pointer self-start rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black"
+              className="hover:shadow-custom flex cursor-pointer self-start rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black hover:border-black hover:bg-black hover:text-white"
             >
               See other projects
               <svg
@@ -93,11 +93,11 @@ const Projects = () => {
               >
                 <path
                   d="M13 3L16.293 6.293L9.29297 13.293L10.707 14.707L17.707 7.707L21 11V3H13Z"
-                  fill="black"
+                  fill="currentColor"
                 />
                 <path
                   d="M19 19H5V5H12L10 3H5C3.897 3 3 3.897 3 5V19C3 20.103 3.897 21 5 21H19C20.103 21 21 20.103 21 19V14L19 12V19Z"
-                  fill="black"
+                  fill="currentColor"
                 />
               </svg>
             </Link>

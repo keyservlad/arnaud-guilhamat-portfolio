@@ -9,6 +9,9 @@ export default {
         nunito: ["Nunito", "sans-serif"],
         montserat: ["Montserrat", "sans-serif"],
       },
+      boxShadow: {
+        custom: "0 9px 20px rgba(0, 0, 0, 0.28)",
+      },
     },
   },
   plugins: [],
