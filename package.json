@@ -19,7 +19,7 @@
     "@trpc/react-query": "^10.34.0",
     "@trpc/server": "^10.34.0",
     "framer-motion": "^10.16.4",
-    "locomotive-scroll": "^4.1.4",
+    "locomotive-scroll": "^5.0.0-beta.8",
     "next": "^13.4.11",
     "next-auth": "^4.22.4",
     "react": "18.2.0",
@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "@types/eslint": "^8.44.2",
-    "@types/locomotive-scroll": "^4.1.1",
     "@types/node": "^18.16.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",

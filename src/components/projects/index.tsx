@@ -4,7 +4,7 @@ import ImageProjects from "~/public/images/projects/projects-image.png";
 
 import LogoEmovin from "~/public/images/projects/logo_emovin-05.c2c25522.svg";
 import LogoTwitter from "~/public/images/projects/1f426.png";
-import LogoAG from "~/public/images/logos/LOGO-GA-AG-shadows-lines.svg";
+import LogoAG from "~/public/images/logos/LOGO-GA-AG-final.svg";
 import LogoSkiFamily from "~/public/images/projects/ski_family_menu.b00303521a8d.svg";
 import Arrow from "~/public/images/projects/rotated-right-arrow-svgrepo-com.svg";
 import Link from "next/link";
@@ -80,7 +80,7 @@ const Projects = () => {
             <Link
               target="_blank"
               href="https://github.com/keyservlad"
-              className="hover:shadow-custom flex cursor-pointer self-start rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black hover:border-black hover:bg-black hover:text-white"
+              className="flex cursor-pointer self-start rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
             >
               See other projects
               <svg
