@@ -34,7 +34,7 @@ export default function NavItem({
       <motion.div
         variants={scale}
         animate={isActive ? "open" : "closed"}
-        className="absolute -left-7 h-[10px] w-[10px] rounded-full bg-white"
+        className="absolute -left-7 h-[10px] w-[10px] rounded-full bg-white scale-0"
       />
       <Link className="font-light text-white no-underline" href={href}>
         {title}

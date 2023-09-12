@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import NavItem from "./NavItem";
@@ -28,6 +28,10 @@ const navItems = [
 export default function SidePanel() {
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
+
+  useEffect(() => {
+    console.log(selectedIndicator);
+  }, [selectedIndicator]);
 
   return (
     <motion.div

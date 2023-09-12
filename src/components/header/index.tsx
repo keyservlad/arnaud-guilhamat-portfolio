@@ -1,11 +1,48 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
 import SidePanel from "./sidePanel";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButton = useRef(null);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (isMenuOpen) setIsMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(menuButton.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: 0,
+        end: window.innerHeight * 0.8,
+        onLeave: () => {
+          gsap.to(menuButton.current, {
+            scale: 1,
+            duration: 0.25,
+            ease: "power1.out",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(menuButton.current, {
+            scale: 0,
+            duration: 0.25,
+            ease: "power1.out",
+          });
+          setIsMenuOpen(false);
+        },
+      },
+    });
+  }, []);
 
   return (
     <header className="flex text-black">
@@ -44,7 +81,8 @@ const Header = () => {
         onClick={() => {
           setIsMenuOpen(!isMenuOpen);
         }}
-        className="fixed right-7 top-7 flex h-20 w-20 cursor-pointer items-center justify-center rounded-full bg-black z-50"
+        ref={menuButton}
+        className="fixed right-7 top-7 z-50 flex h-20 w-20 scale-0 cursor-pointer items-center justify-center rounded-full bg-black"
       >
         <div className="relative w-full">
           <div
