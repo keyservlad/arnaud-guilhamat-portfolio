@@ -11,7 +11,7 @@ interface NavItemProps {
   isActive: boolean;
   setSelectedIndicator: (href: string) => void;
   setIsMenuOpen: (value: boolean) => void;
-  enableScroll: () => void;
+  setIsLocomotiveScroll: (value: boolean) => void;
 }
 
 export default function NavItem({
@@ -19,7 +19,7 @@ export default function NavItem({
   isActive,
   setSelectedIndicator,
   setIsMenuOpen,
-  enableScroll,
+  setIsLocomotiveScroll,
 }: NavItemProps) {
   const { title, href, index } = data;
 
@@ -42,7 +42,7 @@ export default function NavItem({
       />
       <Link
         onClick={() => {
-          enableScroll();
+          setIsLocomotiveScroll(true);
           setIsMenuOpen(false);
         }}
         className="font-light text-white no-underline"

@@ -7,12 +7,11 @@ import SidePanel from "./sidePanel";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { usePathname } from "next/navigation";
-import LocomotiveScroll from "locomotive-scroll";
 
 const Header = ({
-  locomotiveScroll,
+  setIsLocomotiveScroll,
 }: {
-  locomotiveScroll: LocomotiveScroll | null;
+  setIsLocomotiveScroll: (value: boolean) => void;
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButton = useRef(null);
@@ -43,21 +42,12 @@ const Header = ({
             duration: 0.25,
             ease: "power1.out",
           });
-          enableScroll();
+          setIsLocomotiveScroll(true);
           setIsMenuOpen(false);
         },
       },
     });
   }, []);
-
-  function enableScroll() {
-    if (locomotiveScroll) locomotiveScroll.start();
-    document.body.style.overflow = "auto";
-  }
-  function disableScroll() {
-    if (locomotiveScroll) locomotiveScroll.stop();
-    document.body.style.overflow = "hidden";
-  }
 
   return (
     <>
@@ -95,7 +85,7 @@ const Header = ({
         </div>
         <button
           onClick={() => {
-            if (isMenuOpen) enableScroll();
+            if (isMenuOpen) setIsLocomotiveScroll(true);
             setIsMenuOpen(!isMenuOpen);
           }}
           ref={menuButton}
@@ -122,8 +112,7 @@ const Header = ({
           {isMenuOpen && (
             <SidePanel
               setIsMenuOpen={setIsMenuOpen}
-              enableScroll={enableScroll}
-              disableScroll={disableScroll}
+              setIsLocomotiveScroll={setIsLocomotiveScroll}
             />
           )}
         </AnimatePresence>

@@ -5,7 +5,6 @@ import NavItem from "./NavItem";
 import { darkBG, menuSlide } from "./anime";
 import Curve from "./Curve";
 import Footer from "./Footer";
-import LocomotiveScroll from "locomotive-scroll";
 
 const navItems = [
   {
@@ -28,21 +27,19 @@ const navItems = [
 
 export default function SidePanel({
   setIsMenuOpen,
-  enableScroll,
-  disableScroll,
+  setIsLocomotiveScroll,
 }: {
   setIsMenuOpen: (value: boolean) => void;
-  enableScroll: () => void;
-  disableScroll: () => void;
+  setIsLocomotiveScroll: (value: boolean) => void;
 }) {
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
   useEffect(() => {
-    disableScroll();
+    setIsLocomotiveScroll(false);
 
     return () => {
-      enableScroll();
+      setIsLocomotiveScroll(true);
     };
   }, []);
 
@@ -59,7 +56,7 @@ export default function SidePanel({
         }}
         className="fixed left-0 top-0 z-40 h-full w-full opacity-[0.35]"
         onClick={() => {
-          enableScroll();
+          setIsLocomotiveScroll(true);
           setIsMenuOpen(false);
         }}
       />
@@ -88,7 +85,7 @@ export default function SidePanel({
                   isActive={selectedIndicator == data.href}
                   setSelectedIndicator={setSelectedIndicator}
                   setIsMenuOpen={setIsMenuOpen}
-                  enableScroll={enableScroll}
+                  setIsLocomotiveScroll={setIsLocomotiveScroll}
                 />
               );
             })}

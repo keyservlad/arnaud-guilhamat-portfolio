@@ -1,5 +1,5 @@
 "use client";
-import { use, useEffect, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import AboutMe from "~/components/AboutMe";
 import Help from "~/components/Help";
 import Hero from "~/components/Hero";
@@ -12,13 +12,15 @@ import LocomotiveScroll from "locomotive-scroll";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  let locomotiveScroll: LocomotiveScroll | null = null;
+  const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
+  const [isLocomotiveScroll, setIsLocomotiveScroll] = useState(true);
+  const [scrollTop, setScrollTop] = useState(0);
 
   useEffect(() => {
     (async () => {
-      if (locomotiveScroll) {
+      if (!locomotiveScrollRef.current) {
         const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        locomotiveScroll = new LocomotiveScroll();
+        locomotiveScrollRef.current = new LocomotiveScroll();
       }
 
       setTimeout(() => {
@@ -29,10 +31,22 @@ export default function Home() {
     })();
   }, []);
 
+  useEffect(() => {
+    if (isLocomotiveScroll) {
+      locomotiveScrollRef.current?.scrollTo(scrollTop);
+      locomotiveScrollRef.current?.start();
+      document.body.style.overflow = "auto";
+    } else {
+      locomotiveScrollRef.current?.stop();
+      setScrollTop(window.scrollY || document.documentElement.scrollTop);
+      document.body.style.overflow = "hidden";
+    }
+  }, [isLocomotiveScroll]);
+
   return (
     <>
       <Layout>
-        <Header locomotiveScroll={locomotiveScroll} />
+        <Header setIsLocomotiveScroll={setIsLocomotiveScroll} />
         <Hero />
         <BuildSomething />
         <Help />
