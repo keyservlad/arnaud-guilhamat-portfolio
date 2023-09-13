@@ -28,7 +28,7 @@ const Header = ({
       scrollTrigger: {
         trigger: document.documentElement,
         start: 0,
-        end: window.innerHeight * 0.8,
+        end: window.innerHeight * 0.4,
         onLeave: () => {
           gsap.to(menuButton.current, {
             scale: 1,

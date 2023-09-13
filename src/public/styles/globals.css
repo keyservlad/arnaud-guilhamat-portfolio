@@ -22,5 +22,8 @@
   p {
     @apply mb-[10px] cursor-text;
   }
-}
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
