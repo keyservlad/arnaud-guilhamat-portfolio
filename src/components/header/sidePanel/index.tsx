@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import NavItem from "./NavItem";
-import { menuSlide } from "./anime";
+import { darkBG, menuSlide } from "./anime";
 import Curve from "./Curve";
 import Footer from "./Footer";
+import LocomotiveScroll from "locomotive-scroll";
 
 const navItems = [
   {
@@ -13,58 +14,89 @@ const navItems = [
   },
   {
     title: "My Works",
-    href: "/",
+    href: "/#my-works",
   },
   {
     title: "About Me",
-    href: "/",
+    href: "/#about-me",
   },
   {
     title: "Contact Me",
-    href: "/",
+    href: "/#contact-me",
   },
 ];
 
-export default function SidePanel() {
+export default function SidePanel({
+  setIsMenuOpen,
+  enableScroll,
+  disableScroll,
+}: {
+  setIsMenuOpen: (value: boolean) => void;
+  enableScroll: () => void;
+  disableScroll: () => void;
+}) {
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
   useEffect(() => {
-    console.log(selectedIndicator);
-  }, [selectedIndicator]);
+    disableScroll();
+
+    return () => {
+      enableScroll();
+    };
+  }, []);
 
   return (
-    <motion.div
-      variants={menuSlide}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-      className="fixed right-0 top-0 z-40 h-screen border-none bg-[#292929] text-white"
-    >
-      <div className="flex h-full flex-col justify-between p-24">
-        <div
-          onMouseLeave={() => {
-            setSelectedIndicator(pathname);
-          }}
-          className="mt-20 flex flex-col gap-3 text-6xl"
-        >
-          <div className="mb-10 border-b border-[#999999] text-xs uppercase text-[#999999]">
-            <p>Navigation</p>
+    <>
+      <motion.div
+        variants={darkBG}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        style={{
+          background:
+            "linear-gradient(to right, hsla(220, 13%, 0%, .3) 40%, hsla(220, 13%, 0%, 1) 80%)",
+        }}
+        className="fixed left-0 top-0 z-40 h-full w-full opacity-[0.35]"
+        onClick={() => {
+          enableScroll();
+          setIsMenuOpen(false);
+        }}
+      />
+      <motion.div
+        variants={menuSlide}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        className="fixed right-0 top-0 z-40 h-screen border-none bg-[#292929] text-white"
+      >
+        <div className="flex h-full flex-col justify-between p-24">
+          <div
+            onMouseLeave={() => {
+              setSelectedIndicator(pathname);
+            }}
+            className="mt-20 flex flex-col gap-3 text-6xl"
+          >
+            <div className="mb-10 border-b border-[#999999] text-xs uppercase text-[#999999]">
+              <p>Navigation</p>
+            </div>
+            {navItems.map((data, index) => {
+              return (
+                <NavItem
+                  key={index}
+                  data={{ ...data, index }}
+                  isActive={selectedIndicator == data.href}
+                  setSelectedIndicator={setSelectedIndicator}
+                  setIsMenuOpen={setIsMenuOpen}
+                  enableScroll={enableScroll}
+                />
+              );
+            })}
           </div>
-          {navItems.map((data, index) => {
-            return (
-              <NavItem
-                key={index}
-                data={{ ...data, index }}
-                isActive={selectedIndicator == data.href}
-                setSelectedIndicator={setSelectedIndicator}
-              />
-            );
-          })}
+          <Footer />
         </div>
-        <Footer />
-      </div>
-      <Curve />
-    </motion.div>
+        <Curve />
+      </motion.div>
+    </>
   );
 }

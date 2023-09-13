@@ -7,6 +7,15 @@ export const menuSlide = {
   },
 };
 
+export const darkBG = {
+  initial: { opacity: 0 },
+  enter: { opacity: 0.35, transition: { duration: 0.8, ease: [0.7, 0, 0.2, 1] } },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.8, ease: [0.7, 0, 0.2, 1] },
+  },
+};
+
 export const slide = {
   initial: { x: 80 },
   enter: (i: number) => ({

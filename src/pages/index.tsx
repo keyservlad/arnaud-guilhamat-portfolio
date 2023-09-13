@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import AboutMe from "~/components/AboutMe";
 import Help from "~/components/Help";
 import Hero from "~/components/Hero";
@@ -8,14 +8,18 @@ import Temoignage from "~/components/Temoignage";
 import Header from "~/components/header";
 import Layout from "~/components/layout/Layout";
 import Projects from "~/components/projects";
+import LocomotiveScroll from "locomotive-scroll";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  let locomotiveScroll: LocomotiveScroll | null = null;
 
   useEffect(() => {
     (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      new LocomotiveScroll();
+      if (locomotiveScroll) {
+        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+        locomotiveScroll = new LocomotiveScroll();
+      }
 
       setTimeout(() => {
         setIsLoading(false);
@@ -28,7 +32,7 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <Header />
+        <Header locomotiveScroll={locomotiveScroll} />
         <Hero />
         <BuildSomething />
         <Help />

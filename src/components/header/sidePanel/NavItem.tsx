@@ -10,12 +10,16 @@ interface NavItemProps {
   };
   isActive: boolean;
   setSelectedIndicator: (href: string) => void;
+  setIsMenuOpen: (value: boolean) => void;
+  enableScroll: () => void;
 }
 
 export default function NavItem({
   data,
   isActive,
   setSelectedIndicator,
+  setIsMenuOpen,
+  enableScroll,
 }: NavItemProps) {
   const { title, href, index } = data;
 
@@ -34,9 +38,16 @@ export default function NavItem({
       <motion.div
         variants={scale}
         animate={isActive ? "open" : "closed"}
-        className="absolute -left-7 h-[10px] w-[10px] rounded-full bg-white scale-0"
+        className="absolute -left-7 h-[10px] w-[10px] scale-0 rounded-full bg-white"
       />
-      <Link className="font-light text-white no-underline" href={href}>
+      <Link
+        onClick={() => {
+          enableScroll();
+          setIsMenuOpen(false);
+        }}
+        className="font-light text-white no-underline"
+        href={href}
+      >
         {title}
       </Link>
     </motion.div>
