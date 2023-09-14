@@ -41,7 +41,7 @@ export default function SidePanel({
     return () => {
       activateLocomotiveScroll();
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function desacitvateLocomotiveScroll() {
     setIsLocomotiveScroll(false);

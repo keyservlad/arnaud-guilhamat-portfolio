@@ -37,7 +37,7 @@ export default function Home() {
     } else {
       disableScroll();
     }
-  }, [isLocomotiveScroll]);
+  }, [isLocomotiveScroll]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function disableScroll() {
     locomotiveScrollRef.current?.stop();

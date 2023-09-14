@@ -20,7 +20,7 @@ const Header = ({
 
   useEffect(() => {
     closeMenu();
-  }, [pathname]);
+  }, [pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -46,7 +46,7 @@ const Header = ({
         },
       },
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function closeMenu() {
     if (isMenuOpen) setIsMenuOpen(false);
