@@ -1,6 +1,7 @@
 import Image from "next/legacy/image";
 import React from "react";
 import ImageHero from "~/public/images/hero/keyservlad._png_white_background_happy_software_developer_codin_be50f8eb-2311-4627-87b4-d3e2dfb055fd.png";
+import { animate, motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -8,7 +9,21 @@ const Hero = () => {
       <div className="mx-auto flex max-w-[940px] flex-row items-center justify-center">
         <div className="flex flex-col justify-center pl-6 pr-14">
           <h4 className="mb-[6px]">
-            👋 Hi! my name is Arnaud Guilhamat & I am a
+            <motion.span
+              animate={{
+                rotate: [0, 10, -10, 10, 0],
+                transition: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 2,
+                  ease: "linear",
+                },
+              }}
+              className="mr-3 inline-block origin-bottom-right"
+            >
+              👋
+            </motion.span>
+            Hi! my name is Arnaud Guilhamat & I am a
           </h4>
           <h1 className="mt-[10px] min-w-[420px] font-extrabold">
             Fullstack developer

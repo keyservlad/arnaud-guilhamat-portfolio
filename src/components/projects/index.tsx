@@ -27,7 +27,7 @@ const projects = [
   {
     title: "EMOVIN",
     description:
-      "Initially built with Shopify, our needs evolved and we decided to rebuild our own frontend with Next.js, keeping the Shopify backend, thanks to the Storefront API.",
+      "Initially built with Shopify, our needs evolved and we decided to rebuild our own frontend with Next.js, keeping Shopify as a CMS, communicating via the Storefront API and GraphQL.",
     logo: LogoEmovin,
     link: "/",
     github: "https://github.com/keyservlad/shopify-next-js",

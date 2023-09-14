@@ -9,9 +9,10 @@ const BuildSomething = () => {
           I am opened for a <span className="font-bold">fullstack</span> or{" "}
           <span className="font-bold">frontend</span> position. I am curently
           based in Paris, France, but would be very pleased to move abroad for a
-          project that <span className="font-bold">passionate</span> me. No
-          matter the industry, I&#39;d love to talk with you and see how we
-          could create something wonderful.
+          project that <span className="font-bold">passionates</span> me, I am
+          not afraid of <span className="font-bold">challenges</span>! No matter
+          the industry, I&#39;d love to talk with you and see how we could
+          create something wonderful.
         </p>
       </div>
     </div>
