@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
@@ -19,7 +19,7 @@ const Header = ({
   const pathname = usePathname();
 
   useEffect(() => {
-    if (isMenuOpen) setIsMenuOpen(false);
+    closeMenu();
   }, [pathname]);
 
   useEffect(() => {
@@ -42,12 +42,19 @@ const Header = ({
             duration: 0.25,
             ease: "power1.out",
           });
-          setIsLocomotiveScroll(true);
-          setIsMenuOpen(false);
+          closeMenuAndEnableLomotive();
         },
       },
     });
   }, []);
+
+  function closeMenu() {
+    if (isMenuOpen) setIsMenuOpen(false);
+  }
+  function closeMenuAndEnableLomotive() {
+    setIsLocomotiveScroll(true);
+    setIsMenuOpen(false);
+  }
 
   return (
     <>

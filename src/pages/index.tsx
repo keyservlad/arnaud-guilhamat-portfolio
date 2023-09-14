@@ -1,5 +1,5 @@
 "use client";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AboutMe from "~/components/AboutMe";
 import Help from "~/components/Help";
 import Hero from "~/components/Hero";
@@ -8,7 +8,7 @@ import Temoignage from "~/components/Temoignage";
 import Header from "~/components/header";
 import Layout from "~/components/layout/Layout";
 import Projects from "~/components/projects";
-import LocomotiveScroll from "locomotive-scroll";
+import type LocomotiveScroll from "locomotive-scroll";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,15 +33,23 @@ export default function Home() {
 
   useEffect(() => {
     if (isLocomotiveScroll) {
-      locomotiveScrollRef.current?.scrollTo(scrollTop);
-      locomotiveScrollRef.current?.start();
-      document.body.style.overflow = "auto";
+      enableScroll();
     } else {
-      locomotiveScrollRef.current?.stop();
-      setScrollTop(window.scrollY || document.documentElement.scrollTop);
-      document.body.style.overflow = "hidden";
+      disableScroll();
     }
   }, [isLocomotiveScroll]);
+
+  function disableScroll() {
+    locomotiveScrollRef.current?.stop();
+    setScrollTop(window.scrollY || document.documentElement.scrollTop);
+    document.body.style.overflow = "hidden";
+  }
+
+  function enableScroll() {
+    locomotiveScrollRef.current?.scrollTo(scrollTop);
+    locomotiveScrollRef.current?.start();
+    document.body.style.overflow = "auto";
+  }
 
   return (
     <>

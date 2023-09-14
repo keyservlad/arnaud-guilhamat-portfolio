@@ -36,12 +36,20 @@ export default function SidePanel({
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
   useEffect(() => {
-    setIsLocomotiveScroll(false);
+    desacitvateLocomotiveScroll();
 
     return () => {
-      setIsLocomotiveScroll(true);
+      activateLocomotiveScroll();
     };
   }, []);
+
+  function desacitvateLocomotiveScroll() {
+    setIsLocomotiveScroll(false);
+  }
+
+  function activateLocomotiveScroll() {
+    setIsLocomotiveScroll(true);
+  }
 
   return (
     <>

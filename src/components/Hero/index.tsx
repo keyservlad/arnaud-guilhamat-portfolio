@@ -1,7 +1,7 @@
 import Image from "next/legacy/image";
 import React from "react";
 import ImageHero from "~/public/images/hero/keyservlad._png_white_background_happy_software_developer_codin_be50f8eb-2311-4627-87b4-d3e2dfb055fd.png";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
