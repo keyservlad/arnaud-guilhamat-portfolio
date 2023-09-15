@@ -2,13 +2,13 @@
 import { wrap } from "@motionone/utils";
 import {
   motion,
-  AnimatePresence,
   useScroll,
   useSpring,
   useTransform,
   useMotionValue,
   useVelocity,
   useAnimationFrame,
+  MotionValue,
 } from "framer-motion";
 import { useRef } from "react";
 
@@ -22,7 +22,7 @@ export function Scroller() {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
-    const smoothVelocity = useSpring(scrollVelocity, {
+    const smoothVelocity: MotionValue<number> = useSpring(scrollVelocity, {
       damping: 50,
       stiffness: 400,
     });

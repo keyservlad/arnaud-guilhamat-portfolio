@@ -17,7 +17,7 @@ export function TypingText({ text }: { text: string }) {
     return () => {
       clearInterval(typingEffect);
     };
-  }, [i]);
+  }, [i]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <h1 className="font-display mt-[10px] min-w-[420px] font-extrabold drop-shadow-sm">
