@@ -2,6 +2,7 @@ import Image from "next/legacy/image";
 import React from "react";
 import ImageHero from "~/public/images/hero/keyservlad._png_white_background_happy_software_developer_codin_be50f8eb-2311-4627-87b4-d3e2dfb055fd.png";
 import { motion } from "framer-motion";
+import { TypingText } from "./TypingText";
 
 const Hero = () => {
   return (
@@ -25,9 +26,7 @@ const Hero = () => {
             </motion.span>
             Hi! my name is Arnaud Guilhamat & I am a
           </h4>
-          <h1 className="mt-[10px] min-w-[420px] font-extrabold">
-            Fullstack developer
-          </h1>
+          <TypingText text={"Fullstack developer"} />
           <p>
             Crafting Exceptional Digital Experiences. Transforming Complex
             Problems into Simple Solutions.
