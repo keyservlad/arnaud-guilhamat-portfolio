@@ -9,8 +9,12 @@ export default {
         nunito: ["Nunito", "sans-serif"],
         montserat: ["Montserrat", "sans-serif"],
       },
+      colors: {
+        dark: "#1c1d20",
+      },
       boxShadow: {
         custom: "0 9px 20px rgba(0, 0, 0, 0.28)",
+        footer: "0px 60px 50px rgba(0, 0, 0, 0.748);",
       },
     },
   },

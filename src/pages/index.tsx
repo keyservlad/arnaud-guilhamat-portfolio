@@ -9,6 +9,7 @@ import Header from "~/components/header";
 import Layout from "~/components/layout/Layout";
 import Projects from "~/components/projects";
 import type LocomotiveScroll from "locomotive-scroll";
+import Footer from "~/components/Footer";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,6 +62,7 @@ export default function Home() {
         <Projects />
         <Temoignage />
         <AboutMe />
+        <Footer />
       </Layout>
     </>
   );

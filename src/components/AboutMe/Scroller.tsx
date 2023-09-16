@@ -8,7 +8,7 @@ import {
   useMotionValue,
   useVelocity,
   useAnimationFrame,
-  MotionValue,
+  type MotionValue,
 } from "framer-motion";
 import { useRef } from "react";
 

@@ -7,6 +7,7 @@ import SidePanel from "./sidePanel";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { usePathname } from "next/navigation";
+import Magnetic from "../common/Magnetic";
 
 const Header = ({
   setIsLocomotiveScroll,
@@ -60,9 +61,11 @@ const Header = ({
     <>
       <header className="flex text-black">
         <div className="sticky bottom-auto top-0 mx-auto flex min-h-[4vh] w-full items-center justify-between border-b border-slate-100 px-10">
-          <div className="">
-            <Logo />
-          </div>
+          <Magnetic>
+            <div className="">
+              <Logo />
+            </div>
+          </Magnetic>
           <nav className="flex h-full flex-row items-center">
             <Link
               className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 font-bold hover:border-black"
@@ -82,12 +85,14 @@ const Header = ({
             >
               About Me
             </Link>
-            <Link
-              className="ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
-              href="#"
-            >
-              Contact Me
-            </Link>
+            <Magnetic>
+              <Link
+                className="ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
+                href="#"
+              >
+                Contact Me
+              </Link>
+            </Magnetic>
           </nav>
         </div>
         <button
@@ -96,7 +101,10 @@ const Header = ({
             setIsMenuOpen(!isMenuOpen);
           }}
           ref={menuButton}
-          className="fixed right-7 top-7 z-50 flex h-20 w-20 scale-0 cursor-pointer items-center justify-center rounded-full bg-black"
+          style={{
+            boxShadow: "inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2)",
+          }}
+          className="bg-dark fixed right-7 top-7 z-50 flex h-20 w-20 scale-0 cursor-pointer items-center justify-center rounded-full"
         >
           <div className="relative w-full">
             <div

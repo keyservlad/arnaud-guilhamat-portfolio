@@ -73,7 +73,7 @@ export default function SidePanel({
         initial="initial"
         animate="enter"
         exit="exit"
-        className="fixed right-0 top-0 z-40 h-screen border-none bg-[#292929] text-white"
+        className="fixed right-0 top-0 z-40 h-screen border-none bg-dark text-white"
       >
         <div className="flex h-full flex-col justify-between p-24">
           <div
