@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef } from "react";
+import React, { type ReactElement, useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function Magnetic({
@@ -31,11 +31,11 @@ export default function Magnetic({
       xTo(x * str);
       yTo(y * str);
     });
-    magnetic.current?.addEventListener("mouseleave", (e) => {
+    magnetic.current?.addEventListener("mouseleave", () => {
       xTo(0);
       yTo(0);
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return React.cloneElement(children, { ref: magnetic });
 }

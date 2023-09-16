@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRef } from "react";
-import { useScroll, motion, useTransform, useSpring } from "framer-motion";
+import { useScroll, motion, useTransform } from "framer-motion";
 import ProfilePic from "~/public/images/footer/profile.jpg";
 import Rounded from "../common/RoundedButton";
 import Magnetic from "../common/Magnetic";
@@ -21,9 +21,9 @@ export default function Footer() {
       <motion.div
         style={{ y }}
         ref={container}
-        className="bg-dark relative flex flex-col items-center justify-center text-white"
+        className="relative flex flex-col items-center justify-center bg-dark text-white"
       >
-        <footer className="bg-dark w-full max-w-[1800px] pt-44">
+        <footer className="w-full max-w-[1800px] bg-dark pt-44">
           <div className="relative mx-[200px] border-b border-b-[#868686] pb-[100px]">
             <span className="flex items-center">
               <div className="relative h-[100px] w-[100px] overflow-hidden rounded-full">
@@ -37,7 +37,7 @@ export default function Footer() {
                   placeholder="blur"
                 />
               </div>
-              <h2 className="ml-[0.3em] text-7xl font-light">Let's work</h2>
+              <h2 className="ml-[0.3em] text-7xl font-light">Let&#39;s work</h2>
             </span>
             <h2 className="text-7xl font-light">together</h2>
             <motion.div
