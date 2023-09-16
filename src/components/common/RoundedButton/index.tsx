@@ -49,7 +49,7 @@ export default function Rounded({
     <Magnetic>
       <div
         className={
-          style ||
+          style ??
           "relative flex cursor-pointer items-center justify-center overflow-hidden rounded-full border border-[#888888] hover:z-20"
         }
         style={{
@@ -65,7 +65,7 @@ export default function Rounded({
         <Magnetic str={0.2}>
           <div
             className={
-              style ||
+              style ??
               "relative z-10 flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-14 py-4 "
             }
           >
