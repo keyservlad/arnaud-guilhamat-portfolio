@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useRef } from "react";
 import { useScroll, motion, useTransform } from "framer-motion";
 import ProfilePic from "~/public/images/footer/profile.jpg";
@@ -31,7 +31,6 @@ export default function Footer() {
                   layout="fill"
                   objectFit="cover"
                   objectPosition="50% 25%"
-                  fill={true}
                   alt={"image"}
                   src={ProfilePic}
                   placeholder="blur"
