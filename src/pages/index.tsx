@@ -10,6 +10,8 @@ import Layout from "~/components/layout/Layout";
 import Projects from "~/components/projects";
 import type LocomotiveScroll from "locomotive-scroll";
 import Footer from "~/components/Footer";
+import Preloader from "~/components/Preloader";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,10 +25,11 @@ export default function Home() {
         const LocomotiveScroll = (await import("locomotive-scroll")).default;
         locomotiveScrollRef.current = new LocomotiveScroll();
       }
+      disableScroll();
 
       setTimeout(() => {
         setIsLoading(false);
-        document.body.style.cursor = "default";
+        enableScroll();
         window.scrollTo(0, 0);
       }, 2000);
     })();
@@ -55,6 +58,9 @@ export default function Home() {
   return (
     <>
       <Layout>
+        <AnimatePresence mode="wait">
+          {isLoading && <Preloader />}
+        </AnimatePresence>
         <Header setIsLocomotiveScroll={setIsLocomotiveScroll} />
         <Hero />
         <BuildSomething />

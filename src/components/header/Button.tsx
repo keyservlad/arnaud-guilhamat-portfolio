@@ -25,7 +25,6 @@ const Button = ({
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (menuButton.current) {
-      console.log(menuButton);
       gsap.to(menuButton.current, {
         scrollTrigger: {
           trigger: document.documentElement,
@@ -50,10 +49,6 @@ const Button = ({
       });
     }
   }, [menuButton]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    console.log(menuButton.current);
-  }, [menuButton]);
 
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const circle = useRef<HTMLDivElement | null>(null);
