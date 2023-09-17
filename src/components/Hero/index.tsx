@@ -4,6 +4,7 @@ import ImageHero from "~/public/images/hero/keyservlad._png_white_background_hap
 import { motion } from "framer-motion";
 import { TypingText } from "./TypingText";
 import Magnetic from "../common/Magnetic";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -55,7 +56,16 @@ const Hero = () => {
               </button>
             </Magnetic>
             <Magnetic>
-              <button className="flex cursor-pointer items-center self-center rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black hover:border-black hover:bg-black hover:text-white hover:shadow-custom">
+              <Link
+                href={"/pdf/cv.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                onClick={() => {
+                  window.open("/pdf/cv.pdf", "_blank");
+                }}
+                className="flex cursor-pointer items-center self-center rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
+              >
                 Download CV
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +83,7 @@ const Hero = () => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-              </button>
+              </Link>
             </Magnetic>
           </div>
         </div>
