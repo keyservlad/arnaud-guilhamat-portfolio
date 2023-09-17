@@ -34,7 +34,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-row gap-4">
             <Magnetic>
-              <button className="relative z-10 my-[10px] flex cursor-pointer self-start rounded-lg border border-black bg-black px-10 py-4 font-bold text-white hover:border-black hover:bg-white hover:text-black">
+              <button className="relative z-10 flex cursor-pointer self-start rounded-lg border border-black bg-black px-10 py-4 font-bold text-white hover:border-black hover:bg-white hover:text-black">
                 Contact Me
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

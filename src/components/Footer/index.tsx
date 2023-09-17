@@ -47,11 +47,11 @@ export default function Footer() {
               <Rounded
                 backgroundColor={"#334BD3"}
                 backgroundColorHover={"#455CE9"}
-                style="absolute flex h-44 w-44 cursor-pointer items-center justify-center overflow-hidden rounded-full text-white z-10"
+                style="relative flex h-44 w-44 cursor-pointer items-center justify-center overflow-hidden rounded-full text-white z-10"
               >
                 <p
                   style={{ transition: "color 0.4s linear" }}
-                  className="relative z-30 m-0 cursor-pointer font-light"
+                  className="z-30 m-0 cursor-pointer font-light"
                 >
                   Get in touch
                 </p>
@@ -84,7 +84,7 @@ export default function Footer() {
             <Rounded>
               <p
                 style={{ transition: "color 0.4s linear" }}
-                className="relative z-10 my-4 cursor-pointer"
+                className="relative z-20 my-4 cursor-pointer"
               >
                 +31 6 27 84 74 30
               </p>

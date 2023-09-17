@@ -66,7 +66,7 @@ export default function Rounded({
           <div
             className={
               style ??
-              "relative z-10 flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-14 py-4 "
+              "relative z-20 flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-14 py-4 hover:z-20"
             }
           >
             {children}

@@ -1,28 +1,33 @@
-import React, { type ReactElement, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function Magnetic({
   children,
   str = 0.35,
 }: {
-  children: ReactElement;
+  children: React.ReactNode;
   str?: number;
 }) {
-  const magnetic = useRef<HTMLDivElement | null>(null);
+  const magneticRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const xTo = gsap.quickTo(magnetic.current, "x", {
+    const magneticElement = magneticRef.current;
+
+    if (!magneticElement) return;
+
+    const xTo = gsap.quickTo(magneticElement, "x", {
       duration: 1,
       ease: "elastic.out(1, 0.3)",
     });
-    const yTo = gsap.quickTo(magnetic.current, "y", {
+    const yTo = gsap.quickTo(magneticElement, "y", {
       duration: 1,
       ease: "elastic.out(1, 0.3)",
     });
 
-    magnetic.current?.addEventListener("mousemove", (e) => {
-      const rect = magnetic.current?.getBoundingClientRect();
-      if (!rect) return; // Check if rect is defined
+    magneticElement.addEventListener("mousemove", (e) => {
+      const rect = magneticElement.getBoundingClientRect();
+
+      if (!rect) return;
 
       const { clientX, clientY } = e;
       const { height, width, left, top } = rect;
@@ -31,11 +36,19 @@ export default function Magnetic({
       xTo(x * str);
       yTo(y * str);
     });
-    magnetic.current?.addEventListener("mouseleave", () => {
+
+    magneticElement.addEventListener("mouseleave", () => {
       xTo(0);
       yTo(0);
     });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
-  return React.cloneElement(children, { ref: magnetic });
+  return (
+    <div
+      className="relative z-10 flex items-center justify-center hover:z-50"
+      ref={magneticRef}
+    >
+      {children}
+    </div>
+  );
 }
