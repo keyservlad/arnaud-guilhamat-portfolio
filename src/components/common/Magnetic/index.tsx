@@ -41,7 +41,7 @@ export default function Magnetic({
       xTo(0);
       yTo(0);
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div

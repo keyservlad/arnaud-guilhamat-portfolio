@@ -33,7 +33,7 @@ export default function Home() {
         window.scrollTo(0, 0);
       }, 2000);
     })();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (isLocomotiveScroll) {
