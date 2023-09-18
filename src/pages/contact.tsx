@@ -13,7 +13,7 @@ import Footer from "~/components/Footer";
 import Preloader from "~/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 
-export default function Home() {
+export default function Contact() {
   const [isLocomotiveScroll, setIsLocomotiveScroll] = useState(true);
   return (
     <>
@@ -22,7 +22,7 @@ export default function Home() {
           {isLoading && <Preloader />}
         </AnimatePresence> */}
         <Header setIsLocomotiveScroll={setIsLocomotiveScroll} />
-        index
+        contact
         <Hero />
         <BuildSomething />
         <Help />

@@ -1,10 +1,82 @@
 import React, { type PropsWithChildren } from "react";
+import { useEffect, useRef, useState } from "react";
+import AboutMe from "~/components/AboutMe";
+import Help from "~/components/Help";
+import Hero from "~/components/Hero";
+import BuildSomething from "~/components/LetsBuild";
+import Temoignage from "~/components/Temoignage";
+import Header from "~/components/header";
+import Projects from "~/components/projects";
+import type LocomotiveScroll from "locomotive-scroll";
+import Footer from "~/components/Footer";
+import Preloader from "~/components/Preloader";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { router } from "@trpc/server";
+import { useRouter } from "next/router";
 
-const Layout = (props: PropsWithChildren) => {
+interface LayoutProps extends PropsWithChildren {
+  isLocomotiveScroll: boolean;
+}
+
+const Layout = (props: LayoutProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    (async () => {
+      if (!locomotiveScrollRef.current) {
+        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+        locomotiveScrollRef.current = new LocomotiveScroll();
+      }
+      disableScroll();
+
+      setTimeout(() => {
+        setIsLoading(false);
+        enableScroll();
+        window.scrollTo(0, 0);
+      }, 2000);
+    })();
+
+    return () => {
+      locomotiveScrollRef.current?.destroy();
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (props.isLocomotiveScroll) {
+      enableScroll();
+    } else {
+      disableScroll();
+    }
+  }, [props.isLocomotiveScroll]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function disableScroll() {
+    locomotiveScrollRef.current?.stop();
+    setScrollTop(window.scrollY || document.documentElement.scrollTop);
+    document.body.style.overflow = "hidden";
+  }
+
+  function enableScroll() {
+    locomotiveScrollRef.current?.scrollTo(scrollTop);
+    locomotiveScrollRef.current?.start();
+    document.body.style.overflow = "auto";
+  }
+
+  const router = useRouter();
+  console.log(router.route);
   return (
-    <div className="min-h-screen max-w-[100vw]">
-      <main className="min-h-[64.4vh] overflow-hidden relative">{props.children}</main>
-    </div>
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader />}
+        <motion.div key={router.route} className="min-h-screen max-w-[100vw]">
+          <main className="relative min-h-[64.4vh] overflow-hidden">
+            {props.children}
+          </main>
+        </motion.div>
+      </AnimatePresence>
+    </>
   );
 };
 

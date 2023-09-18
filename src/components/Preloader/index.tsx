@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anim";
+import { useRouter } from "next/router";
 
 const words = [
   "Hello",
@@ -17,6 +18,7 @@ const words = [
 export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  const router = useRouter();
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
@@ -56,7 +58,9 @@ export default function Preloader() {
     <motion.div
       variants={slideUp}
       initial="initial"
+      animate="enter"
       exit="exit"
+      key={router.route}
       className="fixed z-[99999999] flex h-screen w-screen cursor-wait items-center justify-center bg-dark"
     >
       {dimension.width > 0 && (
