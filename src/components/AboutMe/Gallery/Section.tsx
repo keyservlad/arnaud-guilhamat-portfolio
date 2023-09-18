@@ -134,7 +134,7 @@ export default function Section({
         Design & Development
       </p>
       {imageList.map((image, index) => (
-        <ImageQueue pushRef={pushRef} image={image} index={index} />
+        <ImageQueue pushRef={pushRef} image={image} index={index} key={index} />
       ))}
     </div>
   );
@@ -153,7 +153,6 @@ function ImageQueue({
   pushRef(ref);
   return (
     <div
-      key={index}
       ref={ref}
       className="pointer-events-none absolute hidden h-80 w-80 -translate-x-1/2 -translate-y-1/2"
     >

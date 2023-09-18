@@ -202,7 +202,7 @@ export default function Gallery() {
           initial="initial"
           animate={active ? "enter" : "closed"}
         >
-          {sections[modal.index] && sections[modal.index]?.cursorText}
+          {sections[modal.index]?.cursorText}
         </motion.div>
       </>
     </section>
