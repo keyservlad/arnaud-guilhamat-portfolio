@@ -143,7 +143,6 @@ export default function Section({
 function ImageQueue({
   pushRef,
   image,
-  index,
 }: {
   pushRef: (ref: MutableRefObject<HTMLImageElement | null>) => void;
   image: StaticImageData;
