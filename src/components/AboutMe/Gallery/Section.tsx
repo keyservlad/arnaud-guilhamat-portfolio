@@ -1,6 +1,6 @@
 "use client";
-import Image, { StaticImageData } from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
+import React, { type MutableRefObject, useRef } from "react";
 
 interface SectionProps {
   index: number;
@@ -17,13 +17,13 @@ export default function Section({
   imageList,
   setMainImageSrc,
 }: SectionProps) {
-  let steps = useRef(0);
+  const steps = useRef(0);
   const maxNumberOfImages = 3;
 
-  let refs: React.MutableRefObject<HTMLImageElement | null>[] = [];
+  const refs: React.MutableRefObject<HTMLImageElement | null>[] = [];
   const containerRef = useRef<HTMLDivElement | null>(null);
-  let currentIndex = useRef(0);
-  let nbOfImages = useRef(0);
+  const currentIndex = useRef(0);
+  const nbOfImages = useRef(0);
 
   const manageMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const { clientX, clientY, movementX, movementY } = e;
@@ -55,8 +55,6 @@ export default function Section({
   const moveImage = (x: number, y: number) => {
     const currentImage = refs[currentIndex.current]?.current;
 
-    setMainImageSrc(index, imageList[currentIndex.current] as StaticImageData);
-
     if (currentImage) {
       currentImage.style.left = x + "px";
       currentImage.style.top = y + "px";
@@ -65,6 +63,10 @@ export default function Section({
       nbOfImages.current += 1;
       setZIndex();
     }
+
+    const image = imageList[currentIndex.current];
+    if (!image) return;
+    setMainImageSrc(index, image);
   };
 
   const setZIndex = () => {
@@ -86,8 +88,8 @@ export default function Section({
   };
 
   const getCurrentImages = () => {
-    let images = [];
-    let indexOfFirst = currentIndex.current - nbOfImages.current;
+    const images = [];
+    const indexOfFirst = currentIndex.current - nbOfImages.current;
     for (let i = indexOfFirst; i < currentIndex.current; i++) {
       let targetIndex = i;
       if (targetIndex < 0) targetIndex += refs.length;
@@ -104,6 +106,10 @@ export default function Section({
         clearInterval(intervalId); // Stop the interval when nbOfImages.current reaches zero
       }
     }, 200); // Call removeImage every 1000 milliseconds (1 second)
+  };
+
+  const pushRef = (ref: MutableRefObject<HTMLImageElement | null>) => {
+    refs.push(ref);
   };
 
   return (
@@ -127,25 +133,37 @@ export default function Section({
       <p className="pointer-events-none m-0 font-light transition-all duration-[0.4s] group-hover:translate-x-[10px]">
         Design & Development
       </p>
-      {imageList.map((image, index) => {
-        const ref = useRef(null);
-        refs.push(ref);
-        return (
-          <div
-            key={index}
-            ref={ref}
-            className="pointer-events-none absolute hidden h-80 w-80 -translate-x-1/2 -translate-y-1/2"
-          >
-            <Image
-              alt="image"
-              src={image}
-              width={300}
-              height={300}
-              className="aspect-square h-auto object-contain opacity-80"
-            />
-          </div>
-        );
-      })}
+      {imageList.map((image, index) => (
+        <ImageQueue pushRef={pushRef} image={image} index={index} />
+      ))}
+    </div>
+  );
+}
+
+function ImageQueue({
+  pushRef,
+  image,
+  index,
+}: {
+  pushRef: (ref: MutableRefObject<HTMLImageElement | null>) => void;
+  image: StaticImageData;
+  index: number;
+}) {
+  const ref = useRef(null);
+  pushRef(ref);
+  return (
+    <div
+      key={index}
+      ref={ref}
+      className="pointer-events-none absolute hidden h-80 w-80 -translate-x-1/2 -translate-y-1/2"
+    >
+      <Image
+        alt="image"
+        src={image}
+        width={300}
+        height={300}
+        className="aspect-square h-auto object-contain opacity-80"
+      />
     </div>
   );
 }

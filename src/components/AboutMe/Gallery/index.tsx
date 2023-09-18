@@ -2,10 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Section from "./Section";
-import ImageS1 from "~/public/images/About-me/sport/s-1.jpg";
-import ImageH1 from "~/public/images/About-me/tech/h-1.jpg";
-import ImageV1 from "~/public/images/About-me/travel/v-1.jpg";
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
@@ -34,12 +31,12 @@ export default function Gallery() {
   const cursor = useRef<HTMLDivElement | null>(null);
   const cursorLabel = useRef<HTMLDivElement | null>(null);
 
-  let xMoveContainer = useRef<gsap.QuickToFunc | null>(null);
-  let yMoveContainer = useRef<gsap.QuickToFunc | null>(null);
-  let xMoveCursor = useRef<gsap.QuickToFunc | null>(null);
-  let yMoveCursor = useRef<gsap.QuickToFunc | null>(null);
-  let xMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
-  let yMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
+  const xMoveContainer = useRef<gsap.QuickToFunc | null>(null);
+  const yMoveContainer = useRef<gsap.QuickToFunc | null>(null);
+  const xMoveCursor = useRef<gsap.QuickToFunc | null>(null);
+  const yMoveCursor = useRef<gsap.QuickToFunc | null>(null);
+  const xMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
+  const yMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
 
   const [sections, setSections] = useState([
     {
