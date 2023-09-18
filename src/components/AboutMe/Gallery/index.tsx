@@ -2,30 +2,14 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Section from "./Section";
-import ImageS1 from "~/public/images/About-me/s-1.jpg";
-import ImageH1 from "~/public/images/About-me/h-1.jpg";
-import ImageV1 from "~/public/images/About-me/v-1.jpg";
-import Image from "next/image";
+import ImageS1 from "~/public/images/About-me/sport/s-1.jpg";
+import ImageH1 from "~/public/images/About-me/tech/h-1.jpg";
+import ImageV1 from "~/public/images/About-me/travel/v-1.jpg";
+import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
-const sections = [
-  {
-    title: "Sports",
-    src: ImageS1,
-    color: "#8C8C8C",
-  },
-  {
-    title: "PC and keyboards",
-    src: ImageH1,
-    color: "#EFE8D3",
-  },
-  {
-    title: "Travels",
-    src: ImageV1,
-    color: "#706D63",
-  },
-];
+import { SportImages, TechImages, TravelImages } from "./importImages";
 
 const scaleAnimation = {
   initial: { scale: 0, x: "-50%", y: "-50%" },
@@ -57,9 +41,46 @@ export default function Gallery() {
   let xMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
   let yMoveCursorLabel = useRef<gsap.QuickToFunc | null>(null);
 
-  useEffect(() => {
-    console.log(cursor.current);
+  const [sections, setSections] = useState([
+    {
+      title: "Sports",
+      src: SportImages[0],
+      color: "#8C8C8C",
+      cursorText: "Sports",
+      images: SportImages,
+    },
+    {
+      title: "PC and keyboards",
+      src: TechImages[0],
+      color: "#EFE8D3",
+      cursorText: "Tech",
+      images: TechImages,
+    },
+    {
+      title: "Travels",
+      src: TravelImages[0],
+      color: "#706D63",
+      cursorText: "Travels",
+      images: TravelImages,
+    },
+  ]);
 
+  function setMainImageSrc(index: number, src: StaticImageData) {
+    setSections((prevSections) => {
+      const newSections = [...prevSections];
+
+      if (index >= 0 && index < newSections.length) {
+        const sectionToUpdate = newSections[index];
+        if (sectionToUpdate) {
+          sectionToUpdate.src = src;
+        }
+      }
+
+      return newSections;
+    });
+  }
+
+  useEffect(() => {
     //Move Container
     xMoveContainer.current = gsap.quickTo(modalContainer.current, "left", {
       duration: 0.8,
@@ -118,9 +139,9 @@ export default function Gallery() {
       onMouseMove={(e) => {
         moveItems(e.clientX, e.clientY);
       }}
-      className="align-center mt-72 flex flex-col px-48"
+      className="align-center flex flex-col py-72"
     >
-      <div className="flex w-full max-w-[1400px] flex-col items-center justify-center pb-24">
+      <div className="flex w-full flex-col items-center justify-center pb-24">
         {sections.map((section, index) => {
           return (
             <Section
@@ -128,6 +149,8 @@ export default function Gallery() {
               title={section.title}
               manageModal={manageModal}
               key={index}
+              imageList={section.images}
+              setMainImageSrc={setMainImageSrc}
             />
           );
         })}
@@ -138,7 +161,7 @@ export default function Gallery() {
           variants={scaleAnimation}
           initial="initial"
           animate={active ? "enter" : "closed"}
-          className="pointer-events-none fixed left-1/2 top-1/2 z-30 h-80 w-96 overflow-hidden bg-white"
+          className="pointer-events-none fixed left-1/2 top-1/2 z-30 h-[424px] w-[424px] overflow-hidden bg-white"
         >
           <div
             style={{
@@ -149,13 +172,20 @@ export default function Gallery() {
           >
             {sections.map((section, index) => {
               const { src, color } = section;
+              if (!src) return;
               return (
                 <div
                   className="relative flex h-full w-full items-center justify-center"
                   style={{ backgroundColor: color }}
                   key={`modal_${index}`}
                 >
-                  <Image src={src} width={300} height={300} alt="image" className="object-cover" />
+                  <Image
+                    src={src}
+                    width={350}
+                    height={350}
+                    alt="image"
+                    className="aspect-square h-auto object-contain"
+                  />
                 </div>
               );
             })}
@@ -163,19 +193,19 @@ export default function Gallery() {
         </motion.div>
         <motion.div
           ref={cursor}
-          className="pointer-events-none fixed z-30 flex h-20 w-20 items-center justify-center rounded-[50%] bg-[#455CE9] text-sm font-light text-white"
+          className="pointer-events-none fixed z-30 flex h-24 w-24 items-center justify-center rounded-[50%] bg-[#455CE9] text-sm font-light text-white"
           variants={scaleAnimation}
           initial="initial"
           animate={active ? "enter" : "closed"}
-        ></motion.div>
+        />
         <motion.div
           ref={cursorLabel}
-          className="pointer-events-none fixed z-30 flex h-20 w-20 items-center justify-center rounded-[50%] bg-[#455CE9] bg-transparent text-sm font-light text-white"
+          className="pointer-events-none fixed z-30 flex h-24 w-24 items-center justify-center rounded-[50%] bg-[#455CE9] bg-transparent text-sm font-light text-white"
           variants={scaleAnimation}
           initial="initial"
           animate={active ? "enter" : "closed"}
         >
-          View
+          {sections[modal.index] && sections[modal.index]?.cursorText}
         </motion.div>
       </>
     </section>

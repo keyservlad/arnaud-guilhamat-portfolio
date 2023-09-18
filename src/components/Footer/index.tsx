@@ -1,10 +1,11 @@
 import Image from "next/legacy/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useScroll, motion, useTransform } from "framer-motion";
 import ProfilePic from "~/public/images/footer/profile.jpg";
 import Rounded from "../common/RoundedButton";
 import Magnetic from "../common/Magnetic";
 import Circle from "./Circle";
+import Link from "next/link";
 
 export default function Footer() {
   const container = useRef(null);
@@ -15,6 +16,35 @@ export default function Footer() {
   const x = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
+
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString("fr-FR", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      timeZoneName: "short",
+      timeZone: "Europe/Paris",
+    }),
+  );
+
+  useEffect(() => {
+    // Update the time every second (1000 milliseconds)
+    const intervalId = setInterval(() => {
+      setCurrentTime(
+        new Date().toLocaleTimeString("fr-FR", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+          timeZoneName: "short",
+          timeZone: "Europe/Paris",
+        }),
+      );
+    }, 1000);
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <>
       <Circle />
@@ -72,22 +102,26 @@ export default function Footer() {
             </motion.svg>
           </div>
           <div className="mx-[200px] mt-[100px] flex gap-5">
-            <Rounded>
-              <p
-                style={{ transition: "color 0.4s linear" }}
-                className="relative z-10 my-4 cursor-pointer"
-              >
-                info@dennissnellenberg.com
-              </p>
-            </Rounded>
-            <Rounded>
-              <p
-                style={{ transition: "color 0.4s linear" }}
-                className="relative z-20 my-4 cursor-pointer"
-              >
-                +31 6 27 84 74 30
-              </p>
-            </Rounded>
+            <Link href="mailto:arnaud.guilhamat@emovin.fr">
+              <Rounded>
+                <p
+                  style={{ transition: "color 0.4s linear" }}
+                  className="relative z-10 my-4 cursor-pointer"
+                >
+                  arnaud.guilhamat@emovin.fr
+                </p>
+              </Rounded>
+            </Link>
+            <Link href="tel:+33632464694">
+              <Rounded>
+                <p
+                  style={{ transition: "color 0.4s linear" }}
+                  className="relative z-20 my-4 cursor-pointer"
+                >
+                  +33 6 32 32 46 94
+                </p>
+              </Rounded>
+            </Link>
           </div>
           <div className="mt-32 flex justify-between p-5">
             <div className="flex items-end gap-2">
@@ -99,9 +133,9 @@ export default function Footer() {
               </span>
               <span className="flex flex-col gap-4">
                 <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
-                  Version
+                  Local time
                 </h3>
-                <p>11:49 PM GMT+2</p>
+                <p>{currentTime}</p>
               </span>
             </div>
             <div className="flex items-end gap-2">
