@@ -54,6 +54,7 @@ export default function SidePanel({
   return (
     <>
       <motion.div
+        key={"darkBG"}
         variants={darkBG}
         initial="initial"
         animate="enter"
@@ -69,6 +70,7 @@ export default function SidePanel({
         }}
       />
       <motion.div
+        key={"sidePanel"}
         variants={menuSlide}
         initial="initial"
         animate="enter"

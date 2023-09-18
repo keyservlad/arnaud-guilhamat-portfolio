@@ -9,7 +9,7 @@ import LogoSkiFamily from "~/public/images/projects/ski_family_menu.b00303521a8d
 import Arrow from "~/public/images/projects/rotated-right-arrow-svgrepo-com.svg";
 import Link from "next/link";
 
-import GithubImage from "~/public/images/projects/png-transparent-github-computer-icons-github-logo-monochrome-head-thumbnail.png";
+import GithubImage from "~/public/images/projects/github.svg";
 import SVGArrow from "~/public/images/projects/arrow-circle-up-right-svgrepo-com.svg";
 
 interface ProjectCardProps {
@@ -159,29 +159,36 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <div className="flex flex-row">
           {project.github && (
             <div className="relative rounded-full">
-              <Link target="_blank" href={project.github}>
+              <Link
+                target="_blank"
+                href={project.github}
+                className="relative flex h-11 w-11"
+              >
                 <Image
                   alt="github logo"
                   src={GithubImage}
-                  width={50}
-                  height={50}
                   objectFit="contain"
                   objectPosition="center"
-                  placeholder="blur"
+                  layout="fill"
+                  className="m-auto"
                 />
               </Link>
             </div>
           )}
           {project.live && (
             <div className="relative rounded-full">
-              <Link target="_blank" href={project.live}>
+              <Link
+                target="_blank"
+                href={project.live}
+                className="relative flex h-11 w-11"
+              >
                 <Image
                   alt="open link logo"
                   src={SVGArrow}
-                  width={50}
-                  height={50}
                   objectFit="contain"
                   objectPosition="center"
+                  layout="fill"
+                  className="m-auto"
                 />
               </Link>
             </div>

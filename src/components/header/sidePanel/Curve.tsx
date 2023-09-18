@@ -24,8 +24,9 @@ export default function Curve() {
   };
 
   return (
-    <svg className="fill-dark absolute -left-24 top-0 h-full w-28 stroke-none">
+    <svg className="absolute -left-24 top-0 h-full w-28 fill-dark stroke-none">
       <motion.path
+        key={"curve"}
         variants={curve}
         initial="initial"
         animate="enter"

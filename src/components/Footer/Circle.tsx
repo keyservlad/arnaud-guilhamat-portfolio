@@ -13,15 +13,16 @@ const Circle = () => {
     <>
       <motion.div
         ref={container}
+        key={`circle`}
         style={{ height }}
-        className="shadow-footer relative w-full"
+        className="relative w-full shadow-footer"
       >
         <div
           style={{
             borderRadius: "50%",
             transform: "translate(-50%, -86.666%)",
           }}
-          className="shadow-footer absolute left-[50%] z-10 block h-[750%] w-[150%] overflow-hidden bg-[#f7f7fa]"
+          className="absolute left-[50%] z-10 block h-[750%] w-[150%] overflow-hidden bg-[#f7f7fa] shadow-footer"
         />
       </motion.div>
     </>

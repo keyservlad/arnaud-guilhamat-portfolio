@@ -67,6 +67,7 @@ export function Scroller() {
     return (
       <div className="flex flex-nowrap overflow-hidden whitespace-nowrap tracking-tighter">
         <motion.p
+          key={"parallax-text"}
           className="flex flex-nowrap whitespace-nowrap text-center text-4xl font-bold uppercase tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
           style={{ x }}
         >

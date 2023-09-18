@@ -1,18 +1,9 @@
 import React, { type PropsWithChildren } from "react";
 import { useEffect, useRef, useState } from "react";
-import AboutMe from "~/components/AboutMe";
-import Help from "~/components/Help";
-import Hero from "~/components/Hero";
-import BuildSomething from "~/components/LetsBuild";
-import Temoignage from "~/components/Temoignage";
-import Header from "~/components/header";
-import Projects from "~/components/projects";
 import type LocomotiveScroll from "locomotive-scroll";
-import Footer from "~/components/Footer";
 import Preloader from "~/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
-import { router } from "@trpc/server";
 import { useRouter } from "next/router";
 
 interface LayoutProps extends PropsWithChildren {
@@ -68,13 +59,28 @@ const Layout = (props: LayoutProps) => {
   console.log(router.route);
   return (
     <>
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader />}
-        <motion.div key={router.route} className="min-h-screen max-w-[100vw]">
-          <main className="relative min-h-[64.4vh] overflow-hidden">
-            {props.children}
-          </main>
-        </motion.div>
+      <AnimatePresence mode="sync" onExitComplete={() => window.scrollTo(0, 0)}>
+        {isLoading ? (
+          <Preloader />
+        ) : (
+          <motion.div
+            initial={{
+              y: 100,
+            }}
+            animate={{
+              y: 0,
+            }}
+            exit={{
+              y: -100,
+            }}
+            key={router.route}
+            className="min-h-screen max-w-[100vw]"
+          >
+            <main className="relative min-h-[64.4vh] overflow-hidden">
+              {props.children}
+            </main>
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   );

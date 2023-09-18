@@ -60,7 +60,7 @@ export default function Preloader() {
       initial="initial"
       animate="enter"
       exit="exit"
-      key={router.route}
+      key={"preloader"}
       className="fixed z-[99999999] flex h-screen w-screen cursor-wait items-center justify-center bg-dark"
     >
       {dimension.width > 0 && (

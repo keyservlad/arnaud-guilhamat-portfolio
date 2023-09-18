@@ -35,6 +35,7 @@ const Help = () => {
           })}
         </h2>
         <motion.div
+          key={`help`}
           variants={opacity}
           animate={isInView ? "open" : "closed"}
           className="max-w-2xl py-2 text-center leading-relaxed"

@@ -13,6 +13,7 @@ const Hero = () => {
         <div className="flex flex-col justify-center pl-6 pr-14">
           <h4 className="mb-[6px]">
             <motion.span
+              key={`wave`}
               animate={{
                 rotate: [0, 10, -10, 10, 0],
                 transition: {

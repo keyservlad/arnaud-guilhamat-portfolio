@@ -49,6 +49,7 @@ export default function Footer() {
     <>
       <Circle />
       <motion.div
+        key={`footer`}
         style={{ y }}
         ref={container}
         className="relative flex flex-col items-center justify-center bg-dark text-white"
@@ -70,6 +71,7 @@ export default function Footer() {
             </span>
             <h2 className="text-7xl font-light">together</h2>
             <motion.div
+              key={`footer_button`}
               style={{ x }}
               className="absolute left-[calc(100%-400px)] top-[calc(100%-75px)]"
             >
@@ -87,6 +89,7 @@ export default function Footer() {
               </Rounded>
             </motion.div>
             <motion.svg
+              key={`footer_arrow`}
               style={{ rotate, scale: 2 }}
               width="9"
               height="9"
