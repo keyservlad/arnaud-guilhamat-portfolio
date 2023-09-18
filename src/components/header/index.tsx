@@ -11,12 +11,10 @@ const Header = ({
 }: {
   setIsLocomotiveScroll: (value: boolean) => void;
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <>
       <header className="flex text-black">
-        <div className="sticky bottom-auto top-0 mx-auto flex min-h-[4vh] w-full items-center justify-between border-b border-slate-100 px-10 z-[99]">
+        <div className="sticky bottom-auto top-0 z-[99] mx-auto flex min-h-[4vh] w-full items-center justify-between border-b border-slate-100 px-10">
           <Magnetic>
             <div className="">
               <Logo />
@@ -51,19 +49,6 @@ const Header = ({
             </Magnetic>
           </nav>
         </div>
-        <Button
-          setIsLocomotiveScroll={setIsLocomotiveScroll}
-          isMenuOpen={isMenuOpen}
-          setIsMenuOpen={setIsMenuOpen}
-        />
-        <AnimatePresence mode="wait">
-          {isMenuOpen && (
-            <SidePanel
-              setIsMenuOpen={setIsMenuOpen}
-              setIsLocomotiveScroll={setIsLocomotiveScroll}
-            />
-          )}
-        </AnimatePresence>
       </header>
     </>
   );

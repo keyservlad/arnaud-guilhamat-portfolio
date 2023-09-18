@@ -17,7 +17,10 @@ export default function Home() {
   const [isLocomotiveScroll, setIsLocomotiveScroll] = useState(true);
   return (
     <>
-      <Layout isLocomotiveScroll={isLocomotiveScroll}>
+      <Layout
+        isLocomotiveScroll={isLocomotiveScroll}
+        setIsLocomotiveScroll={setIsLocomotiveScroll}
+      >
         {/* <AnimatePresence mode="wait">
           {isLoading && <Preloader />}
         </AnimatePresence> */}

@@ -5,15 +5,19 @@ import Preloader from "~/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import Button from "../header/Button";
+import SidePanel from "../header/sidePanel";
 
 interface LayoutProps extends PropsWithChildren {
   isLocomotiveScroll: boolean;
+  setIsLocomotiveScroll: (value: boolean) => void;
 }
 
 const Layout = (props: LayoutProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
   const [scrollTop, setScrollTop] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -56,7 +60,7 @@ const Layout = (props: LayoutProps) => {
   }
 
   const router = useRouter();
-  console.log(router.route);
+
   return (
     <>
       <AnimatePresence mode="sync" onExitComplete={() => window.scrollTo(0, 0)}>
@@ -74,9 +78,6 @@ const Layout = (props: LayoutProps) => {
                 duration: 0.4,
               },
             }}
-            exit={{
-              y: "-100vh",
-            }}
             key={router.route}
             className="min-h-screen max-w-[100vw]"
           >
@@ -86,6 +87,19 @@ const Layout = (props: LayoutProps) => {
           </motion.div>
         )}
       </AnimatePresence>
+      <Button
+        key={"button"}
+        setIsLocomotiveScroll={props.setIsLocomotiveScroll}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
+      {isMenuOpen && (
+        <SidePanel
+          key={"sidePanel"}
+          setIsMenuOpen={setIsMenuOpen}
+          setIsLocomotiveScroll={props.setIsLocomotiveScroll}
+        />
+      )}
     </>
   );
 };
