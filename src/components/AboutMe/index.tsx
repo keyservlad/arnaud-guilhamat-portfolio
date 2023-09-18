@@ -1,7 +1,38 @@
+import { type StaticImageData } from "next/image";
 import Gallery from "./Gallery";
 import { Scroller } from "./Scroller";
 
-const AboutMe = () => {
+interface GalleryProps {
+  moveItems: (x: number, y: number) => void;
+  sections: {
+    title: string;
+    src: StaticImageData | undefined;
+    color: string;
+    cursorText: string;
+    images: StaticImageData[];
+  }[];
+  setSections: React.Dispatch<
+    React.SetStateAction<
+      {
+        title: string;
+        src: StaticImageData | undefined;
+        color: string;
+        cursorText: string;
+        images: StaticImageData[];
+      }[]
+    >
+  >;
+  setModal: (value: any) => void;
+  growCursor: () => void;
+}
+
+const AboutMe = ({
+  moveItems,
+  sections,
+  setSections,
+  setModal,
+  growCursor,
+}: GalleryProps) => {
   return (
     <>
       <div className="relative z-20 block w-full bg-[#f7f7fa]">
@@ -9,7 +40,13 @@ const AboutMe = () => {
           <h2>About Me</h2>
         </div>
         <Scroller />
-        <Gallery />
+        <Gallery
+          moveItems={moveItems}
+          sections={sections}
+          setModal={setModal}
+          setSections={setSections}
+          growCursor={growCursor}
+        />
       </div>
     </>
   );

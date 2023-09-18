@@ -31,7 +31,6 @@ export default function Contact() {
         <Help />
         <Projects />
         <Temoignage />
-        <AboutMe />
         <Footer />
       </Layout>
     </>
