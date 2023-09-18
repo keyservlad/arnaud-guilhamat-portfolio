@@ -65,13 +65,17 @@ const Layout = (props: LayoutProps) => {
         ) : (
           <motion.div
             initial={{
-              y: 100,
+              y: "100vh",
             }}
             animate={{
               y: 0,
+              transition: {
+                delay: 0.4,
+                duration: 0.4,
+              },
             }}
             exit={{
-              y: -100,
+              y: "-100vh",
             }}
             key={router.route}
             className="min-h-screen max-w-[100vw]"
