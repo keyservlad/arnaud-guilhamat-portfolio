@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
-import { AnimatePresence } from "framer-motion";
-import SidePanel from "./sidePanel";
 import Magnetic from "../common/Magnetic";
-import Button from "./Button";
 
-const Header = ({
-  setIsLocomotiveScroll,
-}: {
-  setIsLocomotiveScroll: (value: boolean) => void;
-}) => {
+const Header = () => {
   return (
     <>
       <header className="flex text-black">

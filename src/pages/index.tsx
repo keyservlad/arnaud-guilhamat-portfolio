@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import AboutMe from "~/components/AboutMe";
 import Help from "~/components/Help";
 import Hero from "~/components/Hero";
@@ -8,11 +8,8 @@ import Temoignage from "~/components/Temoignage";
 import Header from "~/components/header";
 import Layout from "~/components/layout/Layout";
 import Projects from "~/components/projects";
-import type LocomotiveScroll from "locomotive-scroll";
 import Footer from "~/components/Footer";
-import Preloader from "~/components/Preloader";
-import { AnimatePresence } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
@@ -23,8 +20,6 @@ import {
 } from "~/components/AboutMe/Gallery/importImages";
 
 export default function Home() {
-  const [isLocomotiveScroll, setIsLocomotiveScroll] = useState(true);
-
   const cursor = useRef<HTMLDivElement | null>(null);
   const cursorLabel = useRef<HTMLDivElement | null>(null);
   const xMoveContainer = useRef<gsap.QuickToFunc | null>(null);
@@ -124,14 +119,11 @@ export default function Home() {
 
   return (
     <>
-      <Layout
-        isLocomotiveScroll={isLocomotiveScroll}
-        setIsLocomotiveScroll={setIsLocomotiveScroll}
-      >
+      <Layout>
         {/* <AnimatePresence mode="wait">
           {isLoading && <Preloader />}
         </AnimatePresence> */}
-        <Header setIsLocomotiveScroll={setIsLocomotiveScroll} />
+        <Header />
         index
         <Hero />
         <BuildSomething />

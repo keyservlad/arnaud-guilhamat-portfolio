@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import Section from "./Section";
-import Image, { type StaticImageData } from "next/image";
-import { motion } from "framer-motion";
-import gsap from "gsap";
+import { type StaticImageData } from "next/image";
 
 interface GalleryProps {
   moveItems: (x: number, y: number) => void;
@@ -63,7 +61,7 @@ export default function Gallery({
 
   useEffect(() => {
     growCursor();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section

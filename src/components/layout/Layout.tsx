@@ -8,16 +8,12 @@ import { useRouter } from "next/router";
 import Button from "../header/Button";
 import SidePanel from "../header/sidePanel";
 
-interface LayoutProps extends PropsWithChildren {
-  isLocomotiveScroll: boolean;
-  setIsLocomotiveScroll: (value: boolean) => void;
-}
-
-const Layout = (props: LayoutProps) => {
+const Layout = (props: PropsWithChildren) => {
   const [isLoading, setIsLoading] = useState(true);
   const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
   const [scrollTop, setScrollTop] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLocomotiveScroll, setIsLocomotiveScroll] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -40,12 +36,12 @@ const Layout = (props: LayoutProps) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (props.isLocomotiveScroll) {
+    if (isLocomotiveScroll) {
       enableScroll();
     } else {
       disableScroll();
     }
-  }, [props.isLocomotiveScroll]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isLocomotiveScroll]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function disableScroll() {
     locomotiveScrollRef.current?.stop();
@@ -89,7 +85,7 @@ const Layout = (props: LayoutProps) => {
       </AnimatePresence>
       <Button
         key={"button"}
-        setIsLocomotiveScroll={props.setIsLocomotiveScroll}
+        setIsLocomotiveScroll={setIsLocomotiveScroll}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
@@ -97,7 +93,7 @@ const Layout = (props: LayoutProps) => {
         <SidePanel
           key={"sidePanel"}
           setIsMenuOpen={setIsMenuOpen}
-          setIsLocomotiveScroll={props.setIsLocomotiveScroll}
+          setIsLocomotiveScroll={setIsLocomotiveScroll}
         />
       )}
     </>
