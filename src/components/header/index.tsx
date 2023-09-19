@@ -14,12 +14,17 @@ const Header = () => {
             </div>
           </Magnetic>
           <nav className="flex h-full flex-row items-center">
-            <Link
+            <button
               className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 font-bold hover:border-black"
-              href="#"
+              onClick={() => {
+                window.scrollTo({
+                  top: 200,
+                  behavior: "smooth",
+                });
+              }}
             >
               Home
-            </Link>
+            </button>
             <Link
               className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 hover:border-black"
               href="#"
@@ -32,14 +37,16 @@ const Header = () => {
             >
               About Me
             </Link>
-            <Magnetic>
-              <Link
-                className="ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
-                href="#"
-              >
-                Contact Me
-              </Link>
-            </Magnetic>
+            <div className="z-[999]">
+              <Magnetic>
+                <Link
+                  className="z-[999] ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
+                  href="#"
+                >
+                  Contact Me
+                </Link>
+              </Magnetic>
+            </div>
           </nav>
         </div>
       </header>

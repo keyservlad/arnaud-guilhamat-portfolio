@@ -45,7 +45,7 @@ export default function Magnetic({
 
   return (
     <div
-      className="relative z-10 flex items-center justify-center hover:z-50"
+      className="relative z-[10] flex items-center justify-center hover:z-50"
       ref={magneticRef}
     >
       {children}

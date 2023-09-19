@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import NavItem from "./NavItem";
 import { darkBG, menuSlide } from "./anime";
 import Curve from "./Curve";
 import Footer from "./Footer";
+import { useAppContext } from "~/context/appContext";
 
 const navItems = [
   {
@@ -25,13 +26,8 @@ const navItems = [
   },
 ];
 
-export default function SidePanel({
-  setIsMenuOpen,
-  setIsLocomotiveScroll,
-}: {
-  setIsMenuOpen: (value: boolean) => void;
-  setIsLocomotiveScroll: (value: boolean) => void;
-}) {
+export default function SidePanel() {
+  const { setIsMenuOpen, setIsLocomotiveScroll } = useAppContext();
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 

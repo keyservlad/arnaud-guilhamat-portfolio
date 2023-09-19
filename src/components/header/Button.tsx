@@ -1,18 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { usePathname } from "next/navigation";
 import Magnetic from "../common/Magnetic";
+import { useAppContext } from "~/context/appContext";
 
-const Button = ({
-  setIsLocomotiveScroll,
-  isMenuOpen,
-  setIsMenuOpen,
-}: {
-  setIsLocomotiveScroll: (value: boolean) => void;
-  isMenuOpen: boolean;
-  setIsMenuOpen: (value: boolean) => void;
-}) => {
+const Button = () => {
+  const { isMenuOpen, setIsMenuOpen, setIsLocomotiveScroll } = useAppContext();
+
   const menuButton = useRef<HTMLButtonElement | null>(null);
 
   const pathname = usePathname();
@@ -30,9 +25,15 @@ const Button = ({
           start: 0,
           end: window.innerHeight * 0.4,
           onLeave: () => {
+            gsap.to(container.current, {
+              right: "1.75rem",
+              duration: 0.25,
+              ease: "power1.out",
+            });
             gsap.to(menuButton.current, {
               scale: 1,
               duration: 0.25,
+              delay: 0.25,
               ease: "power1.out",
             });
           },
@@ -43,6 +44,12 @@ const Button = ({
               ease: "power1.out",
             });
             closeMenuAndEnableLomotive();
+            gsap.to(container.current, {
+              right: "-3rem",
+              duration: 0.25,
+              ease: "power1.out",
+              delay: 0.25,
+            });
           },
         },
       });
@@ -51,6 +58,7 @@ const Button = ({
 
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const circle = useRef<HTMLDivElement | null>(null);
+  const container = useRef<HTMLDivElement | null>(null);
 
   let timeoutId: NodeJS.Timeout | null = null;
 
@@ -89,7 +97,7 @@ const Button = ({
   }
   return (
     <>
-      <div className="fixed right-7 top-7 z-50">
+      <div ref={container} className="fixed -right-12 top-7 z-50">
         <Magnetic>
           <button
             ref={(el) => {
@@ -105,7 +113,7 @@ const Button = ({
             onMouseLeave={() => {
               manageMouseLeave();
             }}
-            className={`shadow-buttonHeader flex h-20 w-20 scale-0 cursor-pointer items-center justify-center overflow-hidden  rounded-full ${
+            className={`flex h-20 w-20 scale-0 cursor-pointer items-center justify-center overflow-hidden rounded-full  shadow-buttonHeader ${
               isMenuOpen ? "bg-[#455CE9]" : "bg-dark"
             }`}
           >

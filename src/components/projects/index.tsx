@@ -64,7 +64,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="bg-[#f7f7fa]">
+    <div id="my-works" className="bg-[#f7f7fa]">
       <div className="align-center mx-auto flex max-w-[940px] flex-col justify-between pb-10 pt-20">
         <div className="align-center mb-10 mt-0 flex flex-row justify-between gap-x-8 text-left">
           <div className="flex flex-col justify-start">
