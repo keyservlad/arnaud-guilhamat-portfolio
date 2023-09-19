@@ -10,7 +10,42 @@ import SidePanel from "../header/sidePanel";
 import { useAppContext } from "~/context/appContext";
 
 const Layout = (props: PropsWithChildren) => {
-  const { isLoading, isMenuOpen } = useAppContext();
+  const {
+    isMenuOpen,
+    locomotiveScrollRef,
+    disableScroll,
+    enableScroll,
+    isLocomotiveScroll,
+  } = useAppContext();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      if (!locomotiveScrollRef.current) {
+        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+        locomotiveScrollRef.current = new LocomotiveScroll();
+      }
+      disableScroll();
+
+      setTimeout(() => {
+        setIsLoading(false);
+        enableScroll();
+        window.scrollTo(0, 0);
+      }, 2000);
+    })();
+
+    return () => {
+      locomotiveScrollRef.current?.destroy();
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (isLocomotiveScroll) {
+      enableScroll();
+    } else {
+      disableScroll();
+    }
+  }, [isLocomotiveScroll]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const router = useRouter();
 
