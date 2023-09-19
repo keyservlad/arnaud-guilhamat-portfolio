@@ -54,6 +54,36 @@ export default function Preloader() {
     },
   };
 
+  const initialUpperCurvePath = `M0 300 Q${dimension.width / 2} 300 ${
+    dimension.width
+  } 300 L${dimension.width} ${dimension.height + 300} L0 ${
+    dimension.height + 300
+  } L0 300`;
+
+  // Note à moi meme : si tu veux faire une courbe en haut, il faut que le point de controle soit POSITIF
+  // const targetUpperCurvePath = `M${dimension.width} ${dimension.height} L0 ${
+  //   dimension.height
+  // } L0 0 Q${dimension.width / 2} -300 ${dimension.width} 0 L${
+  //   dimension.width
+  // } ${dimension.height}`;
+
+  const targetUpperCurvePath2 = `M0 300 Q${dimension.width / 2} 0 ${
+    dimension.width
+  } 300 L${dimension.width} ${dimension.height + 300} L0 ${
+    dimension.height + 300
+  } L0 300`;
+
+  const upperCurve = {
+    initial: {
+      d: initialUpperCurvePath,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+    },
+    enter: {
+      d: targetUpperCurvePath2,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+    },
+  };
+
   return (
     <motion.div
       variants={slideUp}
@@ -61,7 +91,7 @@ export default function Preloader() {
       animate="enter"
       exit="exit"
       key={"preloader"}
-      className="fixed z-[99999999] flex h-screen w-screen cursor-wait items-center justify-center bg-dark"
+      className="fixed z-[99999] flex h-screen w-screen cursor-wait items-center justify-center bg-dark"
     >
       {dimension.width > 0 && (
         <>
@@ -80,6 +110,14 @@ export default function Preloader() {
               variants={curve}
               initial="initial"
               exit="exit"
+            />
+          </svg>
+          <svg className="absolute -top-[300px] h-[calc(100%+300px)] w-full">
+            <motion.path
+              className="fill-dark"
+              variants={upperCurve}
+              initial="initial"
+              animate="enter"
             />
           </svg>
         </>
