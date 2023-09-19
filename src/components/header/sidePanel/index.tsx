@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import NavItem from "./NavItem";
 import { darkBG, menuSlide } from "./anime";
@@ -48,7 +48,7 @@ export default function SidePanel() {
   }
 
   return (
-    <>
+    <motion.div initial="initial" animate="enter" exit="exit">
       <motion.div
         key={"darkBG"}
         variants={darkBG}
@@ -100,6 +100,6 @@ export default function SidePanel() {
         </div>
         <Curve />
       </motion.div>
-    </>
+    </motion.div>
   );
 }

@@ -37,16 +37,14 @@ const Header = () => {
             >
               About Me
             </Link>
-            <div className="z-[999]">
-              <Magnetic>
-                <Link
-                  className="z-[999] ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
-                  href="#"
-                >
-                  Contact Me
-                </Link>
-              </Magnetic>
-            </div>
+            <Magnetic>
+              <Link
+                className="z-[999] ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
+                href="#"
+              >
+                Contact Me
+              </Link>
+            </Magnetic>
           </nav>
         </div>
       </header>

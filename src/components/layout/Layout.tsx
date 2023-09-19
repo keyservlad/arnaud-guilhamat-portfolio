@@ -41,7 +41,9 @@ const Layout = (props: PropsWithChildren) => {
         )}
       </AnimatePresence>
       <Button key={"button"} />
-      {isMenuOpen && <SidePanel key={"sidePanel"} />}
+      <AnimatePresence mode="wait">
+        {isMenuOpen && <SidePanel key={"sidePanel"} />}
+      </AnimatePresence>
     </>
   );
 };

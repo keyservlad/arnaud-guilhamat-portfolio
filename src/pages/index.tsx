@@ -120,9 +120,6 @@ export default function Home() {
   return (
     <>
       <Layout>
-        {/* <AnimatePresence mode="wait">
-          {isLoading && <Preloader />}
-        </AnimatePresence> */}
         <Header />
         index
         <Hero />

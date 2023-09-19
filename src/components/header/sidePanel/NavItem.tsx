@@ -25,7 +25,6 @@ export default function NavItem({
 
   return (
     <motion.div
-      key={href}
       className="relative flex items-center"
       onMouseEnter={() => {
         setSelectedIndicator(href);
@@ -37,7 +36,6 @@ export default function NavItem({
       exit="exit"
     >
       <motion.div
-        key={`indicator_${index}`}
         variants={scale}
         animate={isActive ? "open" : "closed"}
         className="absolute -left-7 h-[10px] w-[10px] scale-0 rounded-full bg-white"
