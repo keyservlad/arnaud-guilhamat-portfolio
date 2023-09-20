@@ -38,7 +38,6 @@ const Layout = (props: PropsWithChildren) => {
               setTimeout(() => {
                 if (router.route === "/") {
                   if (scrollRouting) {
-                    console.log(scrollRouting);
                     scrollToId(scrollRouting);
                     setScrollRouting(null);
                   }

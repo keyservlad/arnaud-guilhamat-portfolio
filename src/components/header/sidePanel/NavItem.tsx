@@ -10,6 +10,7 @@ interface NavItemProps {
     href: string;
     index: number;
     type: string;
+    id: string;
   };
   isActive: boolean;
   setSelectedIndicator: (href: string) => void;
@@ -24,7 +25,7 @@ export default function NavItem({
   setIsMenuOpen,
   setIsLocomotiveScroll,
 }: NavItemProps) {
-  const { title, href, index, type } = data;
+  const { title, href, index, type, id } = data;
   const router = useRouter();
   const { setScrollRouting, scrollToId } = useAppContext();
 
@@ -63,10 +64,9 @@ export default function NavItem({
             setIsMenuOpen(false);
             setTimeout(() => {
               if (router.pathname === "/") {
-                scrollToId(href);
-                console.log(href);
+                scrollToId(id);
               } else {
-                setScrollRouting(href);
+                setScrollRouting(id);
                 router.push("/");
               }
             }, 200);

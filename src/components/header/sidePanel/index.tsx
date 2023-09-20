@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import NavItem from "./NavItem";
@@ -10,22 +10,26 @@ import { useAppContext } from "~/context/appContext";
 const navItems = [
   {
     title: "Home",
-    href: "#__next",
+    href: "/",
+    id: "#__next",
     type: "button",
   },
   {
     title: "My Works",
-    href: "#my-works",
+    href: "my-works",
+    id: "#my-works",
     type: "button",
   },
   {
     title: "About Me",
-    href: "#about-me",
+    href: "about-me",
+    id: "#about-me",
     type: "button",
   },
   {
     title: "Contact Me",
     href: "/contact",
+    id: "",
     type: "link",
   },
 ];
