@@ -18,6 +18,9 @@ const Button = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.config({
+      nullTargetWarn: false,
+    });
     if (menuButton.current) {
       gsap.to(menuButton.current, {
         scrollTrigger: {
@@ -26,7 +29,7 @@ const Button = () => {
           end: window.innerHeight * 0.4,
           onLeave: () => {
             gsap.to(container.current, {
-              right: "1.75rem",
+              scale: 1,
               duration: 0.25,
               ease: "power1.out",
             });
@@ -45,7 +48,7 @@ const Button = () => {
             });
             closeMenuAndEnableLomotive();
             gsap.to(container.current, {
-              right: "-3rem",
+              scale: 0,
               duration: 0.25,
               ease: "power1.out",
               delay: 0.25,
@@ -97,7 +100,7 @@ const Button = () => {
   }
   return (
     <>
-      <div ref={container} className="fixed -right-12 top-7 z-50">
+      <div ref={container} className="fixed right-7 top-7 z-50 scale-0">
         <Magnetic>
           <button
             ref={(el) => {

@@ -10,19 +10,23 @@ import { useAppContext } from "~/context/appContext";
 const navItems = [
   {
     title: "Home",
-    href: "/",
+    href: "#__next",
+    type: "button",
   },
   {
     title: "My Works",
-    href: "/#my-works",
+    href: "#my-works",
+    type: "button",
   },
   {
     title: "About Me",
-    href: "/#about-me",
+    href: "#about-me",
+    type: "button",
   },
   {
     title: "Contact Me",
-    href: "/#contact-me",
+    href: "/contact",
+    type: "link",
   },
 ];
 

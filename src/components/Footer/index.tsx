@@ -67,27 +67,31 @@ export default function Footer() {
                   placeholder="blur"
                 />
               </div>
-              <h2 className="ml-[0.3em] text-7xl font-light">Let&#39;s work</h2>
+              <h2 className="ml-[0.3em] text-7xl font-semibold">
+                Let&#39;s work
+              </h2>
             </span>
-            <h2 className="text-7xl font-light">together</h2>
-            <motion.div
-              key={`footer_button`}
-              style={{ x }}
-              className="absolute left-[calc(100%-400px)] top-[calc(100%-75px)]"
-            >
-              <Rounded
-                backgroundColor={"#334BD3"}
-                backgroundColorHover={"#455CE9"}
-                style="relative flex h-44 w-44 cursor-pointer items-center justify-center overflow-hidden rounded-full text-white z-10"
+            <h2 className="text-left text-7xl font-semibold">together</h2>
+            <Link href={"/contact"}>
+              <motion.div
+                key={`footer_button`}
+                style={{ x }}
+                className="absolute left-[calc(100%-400px)] top-[calc(100%-75px)]"
               >
-                <p
-                  style={{ transition: "color 0.4s linear" }}
-                  className="z-30 m-0 cursor-pointer font-light"
+                <Rounded
+                  backgroundColor={"#334BD3"}
+                  backgroundColorHover={"#455CE9"}
+                  style="relative flex h-44 w-44 cursor-pointer items-center justify-center overflow-hidden rounded-full text-white z-10"
                 >
-                  Get in touch
-                </p>
-              </Rounded>
-            </motion.div>
+                  <p
+                    style={{ transition: "color 0.4s linear" }}
+                    className="z-30 m-0 cursor-pointer font-light"
+                  >
+                    Get in touch
+                  </p>
+                </Rounded>
+              </motion.div>
+            </Link>
             <motion.svg
               key={`footer_arrow`}
               style={{ rotate, scale: 2 }}

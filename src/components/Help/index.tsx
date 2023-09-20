@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { slideUp, opacity } from "./animate";
 
 const Help = () => {
-  const title = "How can i help?";
+  const title = "How can I help?";
 
   const containerRef = useRef(null);
   const isInView = useInView(containerRef);

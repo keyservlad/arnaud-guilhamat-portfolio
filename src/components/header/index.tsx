@@ -2,8 +2,12 @@ import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import Magnetic from "../common/Magnetic";
+import { useAppContext } from "~/context/appContext";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const { scrollToId, setScrollRouting } = useAppContext();
+  const router = useRouter();
   return (
     <>
       <header className="flex text-black">
@@ -14,33 +18,42 @@ const Header = () => {
             </div>
           </Magnetic>
           <nav className="flex h-full flex-row items-center">
-            <button
+            <Link
               className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 font-bold hover:border-black"
-              onClick={() => {
-                window.scrollTo({
-                  top: 200,
-                  behavior: "smooth",
-                });
-              }}
+              href={"/"}
             >
               Home
-            </button>
-            <Link
+            </Link>
+            <button
               className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 hover:border-black"
-              href="#"
+              onClick={() => {
+                if (router.pathname === "/") {
+                  scrollToId("#my-works");
+                } else {
+                  setScrollRouting("#my-works");
+                  router.push("/");
+                }
+              }}
             >
               My Works
-            </Link>
-            <Link
+            </button>
+            <button
               className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 hover:border-black"
-              href="#"
+              onClick={() => {
+                if (router.pathname === "/") {
+                  scrollToId("#about-me");
+                } else {
+                  setScrollRouting("#about-me");
+                  router.push("/");
+                }
+              }}
             >
               About Me
-            </Link>
+            </button>
             <Magnetic>
               <Link
                 className="z-[999] ml-2 inline-block cursor-pointer rounded-lg border border-slate-200 px-[15px] py-[10px] font-bold leading-5 hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
-                href="#"
+                href="/contact"
               >
                 Contact Me
               </Link>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAppContext } from "~/context/appContext";
 
 export function TypingText({ text }: { text: string }) {
   const [displayedText, setDisplayedText] = useState("");

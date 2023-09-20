@@ -12,42 +12,24 @@ import { useAppContext } from "~/context/appContext";
 const Layout = (props: PropsWithChildren) => {
   const {
     isMenuOpen,
-    locomotiveScrollRef,
-    disableScroll,
     enableScroll,
-    isLocomotiveScroll,
+    scrollRouting,
+    setScrollRouting,
+    scrollToId,
   } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+  const idPath = router.asPath.split("#")[1];
 
   useEffect(() => {
     (async () => {
-      if (!locomotiveScrollRef.current) {
-        const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        locomotiveScrollRef.current = new LocomotiveScroll();
-      }
-      disableScroll();
-
       setTimeout(() => {
         setIsLoading(false);
         enableScroll();
         window.scrollTo(0, 0);
       }, 2000);
     })();
-
-    return () => {
-      locomotiveScrollRef.current?.destroy();
-    };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    if (isLocomotiveScroll) {
-      enableScroll();
-    } else {
-      disableScroll();
-    }
-  }, [isLocomotiveScroll]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const router = useRouter();
 
   return (
     <>
@@ -56,6 +38,17 @@ const Layout = (props: PropsWithChildren) => {
           <Preloader />
         ) : (
           <motion.div
+            onAnimationComplete={() => {
+              setTimeout(() => {
+                if (router.route === "/") {
+                  if (scrollRouting) {
+                    console.log(scrollRouting);
+                    scrollToId(scrollRouting);
+                    setScrollRouting(null);
+                  }
+                }
+              }, 200);
+            }}
             initial={{
               y: "100vh",
             }}
