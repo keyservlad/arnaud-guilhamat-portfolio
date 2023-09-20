@@ -36,10 +36,13 @@ export default function AppProvider({ children }: any) {
   }
 
   function scrollToId(id: string) {
-    const target: HTMLElement = document.querySelector(id) as HTMLElement;
-    locomotiveScrollRef.current!.scrollTo(target, {
-      duration: 3,
-    });
+    const target: HTMLElement | null = document.querySelector(id);
+
+    if (target) {
+      locomotiveScrollRef.current?.scrollTo(target, {
+        duration: 3,
+      });
+    }
   }
 
   useEffect(() => {

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anim";
-import { useRouter } from "next/router";
 
 const words = [
   "Hello",

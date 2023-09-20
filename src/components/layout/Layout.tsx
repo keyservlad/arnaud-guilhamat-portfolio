@@ -1,5 +1,5 @@
 import React, { type PropsWithChildren } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Preloader from "~/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
@@ -20,13 +20,11 @@ const Layout = (props: PropsWithChildren) => {
   const router = useRouter();
 
   useEffect(() => {
-    (async () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        enableScroll();
-        window.scrollTo(0, 0);
-      }, 2000);
-    })();
+    setTimeout(() => {
+      setIsLoading(false);
+      enableScroll();
+      window.scrollTo(0, 0);
+    }, 2000);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
