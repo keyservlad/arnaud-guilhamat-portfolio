@@ -1,6 +1,5 @@
-import React, { useContext, type PropsWithChildren } from "react";
+import React, { type PropsWithChildren } from "react";
 import { useEffect, useRef, useState } from "react";
-import type LocomotiveScroll from "locomotive-scroll";
 import Preloader from "~/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
@@ -19,7 +18,6 @@ const Layout = (props: PropsWithChildren) => {
   } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
-  const idPath = router.asPath.split("#")[1];
 
   useEffect(() => {
     (async () => {

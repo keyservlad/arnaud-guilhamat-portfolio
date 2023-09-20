@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import NavItem from "./NavItem";
 import { darkBG, menuSlide } from "./anime";

@@ -18,7 +18,6 @@ const words = [
 export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
-  const router = useRouter();
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
