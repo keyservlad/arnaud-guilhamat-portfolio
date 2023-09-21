@@ -19,5 +19,44 @@ export default {
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    ({
+      matchUtilities,
+      theme /* … */,
+    }: {
+      matchUtilities: any;
+      theme: any;
+    }) => {
+      // …
+      matchUtilities(
+        // https://gist.github.com/olets/9b833a33d01384eed1e9f1e106003a3b
+        {
+          aspect: (value: any) => ({
+            "@supports (aspect-ratio: 1 / 1)": {
+              aspectRatio: value,
+            },
+            "@supports not (aspect-ratio: 1 / 1)": {
+              // https://github.com/takamoso/postcss-aspect-ratio-polyfill
+
+              "&::before": {
+                content: '""',
+                float: "left",
+                paddingTop: `calc(100% / (${value}))`,
+              },
+              "&::after": {
+                clear: "left",
+                content: '""',
+                display: "block",
+              },
+            },
+          }),
+        },
+        { values: theme("aspectRatio") },
+      );
+    },
+  ],
 } satisfies Config;

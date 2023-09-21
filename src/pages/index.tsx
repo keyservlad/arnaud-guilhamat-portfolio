@@ -174,7 +174,7 @@ export default function Home() {
         </motion.div>
         <motion.div
           ref={cursor}
-          className="pointer-events-none fixed z-30 flex h-24 w-24 items-center justify-center rounded-[50%] bg-[#455CE9] text-sm font-light text-white"
+          className="pointer-events-none fixed z-30 flex h-24 w-24 items-center justify-center rounded-[50%] bg-[#455CE9] text-sm font-light text-white opacity-75"
           variants={scaleAnimation}
           initial="initial"
           animate={active ? "enter" : "closed"}

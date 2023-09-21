@@ -85,9 +85,8 @@ export function Scroller() {
   }
   return (
     <section>
-      <ParallaxText baseVelocity={1.5}>SPORTS SPORTS&nbsp;</ParallaxText>
-      <ParallaxText baseVelocity={-1.5}>Hardware Hardware&nbsp;</ParallaxText>
-      <ParallaxText baseVelocity={1.5}>Travel Travel&nbsp;</ParallaxText>
+      <ParallaxText baseVelocity={1.5}>SCROLL SCROLL&nbsp;</ParallaxText>
+      <ParallaxText baseVelocity={-1.5}>Explore with MOUSE&nbsp;</ParallaxText>
     </section>
   );
 }

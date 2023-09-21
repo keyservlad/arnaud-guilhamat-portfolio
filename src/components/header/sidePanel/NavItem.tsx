@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { scale, slide } from "./anime";
 import { useRouter } from "next/router";
 import { useAppContext } from "~/context/appContext";
+import Magnetic from "~/components/common/Magnetic";
 
 interface NavItemProps {
   data: {
@@ -46,36 +47,38 @@ export default function NavItem({
         animate={isActive ? "open" : "closed"}
         className="absolute -left-7 h-[10px] w-[10px] scale-0 rounded-full bg-white"
       />
-      {type === "link" ? (
-        <Link
-          onClick={() => {
-            setIsLocomotiveScroll(true);
-            setIsMenuOpen(false);
-          }}
-          className="font-light text-white no-underline"
-          href={href}
-        >
-          {title}
-        </Link>
-      ) : (
-        <button
-          onClick={() => {
-            setIsLocomotiveScroll(true);
-            setIsMenuOpen(false);
-            setTimeout(() => {
-              if (router.pathname === "/") {
-                scrollToId(id);
-              } else {
-                setScrollRouting(id);
-                router.push("/");
-              }
-            }, 200);
-          }}
-          className="font-light text-white no-underline"
-        >
-          {title}
-        </button>
-      )}
+      <Magnetic str={0.1}>
+        {type === "link" ? (
+          <Link
+            onClick={() => {
+              setIsLocomotiveScroll(true);
+              setIsMenuOpen(false);
+            }}
+            className="font-light text-white no-underline"
+            href={href}
+          >
+            {title}
+          </Link>
+        ) : (
+          <button
+            onClick={() => {
+              setIsLocomotiveScroll(true);
+              setIsMenuOpen(false);
+              setTimeout(() => {
+                if (router.pathname === "/") {
+                  scrollToId(id);
+                } else {
+                  setScrollRouting(id);
+                  router.push("/");
+                }
+              }, 200);
+            }}
+            className="font-light text-white no-underline"
+          >
+            {title}
+          </button>
+        )}
+      </Magnetic>
     </motion.div>
   );
 }

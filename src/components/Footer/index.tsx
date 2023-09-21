@@ -131,12 +131,12 @@ export default function Footer() {
             </Link>
           </div>
           <div className="mt-32 flex justify-between p-5">
-            <div className="flex items-end gap-2">
+            <div className="flex items-end gap-6">
               <span className="flex flex-col gap-4">
                 <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
                   Version
                 </h3>
-                <p>2023 © Edition</p>
+                <p>© 2023</p>
               </span>
               <span className="flex flex-col gap-4">
                 <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
@@ -145,7 +145,7 @@ export default function Footer() {
                 <p>{currentTime}</p>
               </span>
             </div>
-            <div className="flex items-end gap-2">
+            <div className="flex items-end gap-4">
               <span className="flex flex-col gap-4">
                 <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
                   socials
