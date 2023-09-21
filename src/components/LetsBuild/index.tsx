@@ -20,7 +20,7 @@ const BuildSomething = () => {
 
   return (
     <div className="block w-full bg-[#f7f7fa]">
-      <div className="items-center mx-auto flex max-w-[940px] flex-col justify-center p-32">
+      <div className="mx-auto flex max-w-[940px] flex-col items-center justify-center p-32">
         <div>
           <motion.h2
             variants={container}
@@ -48,12 +48,12 @@ const BuildSomething = () => {
           >
             I am opened for a <span className="font-bold">fullstack</span> or{" "}
             <span className="font-bold">frontend</span> position. I am curently
-            based in Paris, France but I'm enthusiastically open to relocating
-            for a project that truly ignites my{" "}
-            <span className="font-bold">passion</span> though. Challenges don't
-            intimidate me; in fact, I welcome them with open arms! No matter the
-            industry, I'd love to talk with you and see how we could create
-            something <span className="font-bold">wonderful</span>.
+            based in Paris, France but I&#39;m enthusiastically open to
+            relocating for a project that truly ignites my{" "}
+            <span className="font-bold">passion</span> though. Challenges
+            don&#39;t intimidate me; in fact, I welcome them with open arms! No
+            matter the industry, I&#39;d love to talk with you and see how we
+            could create something <span className="font-bold">wonderful</span>.
           </motion.p>
         </div>
       </div>

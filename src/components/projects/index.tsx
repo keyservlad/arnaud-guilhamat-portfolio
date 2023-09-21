@@ -6,7 +6,6 @@ import LogoEmovin from "~/public/images/projects/logo_emovin-05.c2c25522.svg";
 import LogoTwitter from "~/public/images/projects/1f426.png";
 import LogoAG from "~/public/images/logos/LOGO-GA-AG-final.svg";
 import LogoSkiFamily from "~/public/images/projects/ski_family_menu.b00303521a8d.svg";
-import Arrow from "~/public/images/projects/rotated-right-arrow-svgrepo-com.svg";
 import Link from "next/link";
 
 import GithubImage from "~/public/images/projects/github.svg";
@@ -187,7 +186,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   const isInView2 = useInView(container2, {
     margin: "0px 0px -40px 0px",
   });
-  
+
   return (
     <motion.div
       whileHover={{
@@ -261,7 +260,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             <motion.div
               variants={FADE_UP_ANIMATION_VARIANTS}
               animate={isInView2 ? "show" : "hidden"}
-              className="flex flex-row justify-between my-3"
+              className="my-3 flex flex-row justify-between"
             >
               <h4>{project.title}</h4>
               <div className="flex flex-row gap-1">

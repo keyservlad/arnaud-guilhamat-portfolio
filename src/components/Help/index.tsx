@@ -63,7 +63,7 @@ const BuildSomething = () => {
             animate={isInView2 ? "show" : "hidden"}
           >
             I successfully completed{" "}
-            <span className="font-bold">two master's degrees</span>, the first
+            <span className="font-bold">two master&#39;s degrees</span>, the first
             at the <span className="font-bold">engineering school</span>{" "}
             <Link
               target="_blank"
