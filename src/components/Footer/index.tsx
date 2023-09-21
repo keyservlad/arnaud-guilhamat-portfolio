@@ -148,20 +148,67 @@ export default function Footer() {
             <div className="flex items-end gap-4">
               <span className="flex flex-col gap-4">
                 <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
-                  socials
+                  Socials
                 </h3>
                 <Magnetic>
-                  <p>Awwwards</p>
+                  <Link
+                    target="_blank"
+                    href="https://github.com/keyservlad"
+                    className="group relative"
+                  >
+                    <p className="cursor-pointer">GitHub</p>
+                    <div
+                      style={{
+                        transition: "width 0.2s ease-in-out",
+                      }}
+                      className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
+                    />
+                  </Link>
                 </Magnetic>
               </span>
               <Magnetic>
-                <p>Instagram</p>
+                <Link
+                  target="_blank"
+                  href="https://github.com/keyservlad"
+                  className="hover group"
+                >
+                  <p className="cursor-pointer">LinkedIn</p>
+                  <div
+                    style={{
+                      transition: "width 0.2s ease-in-out",
+                    }}
+                    className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
+                  />
+                </Link>
               </Magnetic>
               <Magnetic>
-                <p>Dribbble</p>
+                <Link
+                  href="mailto:arnaud.guilhamat@emovin.fr"
+                  className="group relative"
+                >
+                  <p className="cursor-pointer">Email</p>
+                  <div
+                    style={{
+                      transition: "width 0.2s ease-in-out",
+                    }}
+                    className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
+                  />
+                </Link>
               </Magnetic>
               <Magnetic>
-                <p>Linkedin</p>
+                <Link
+                  target="_blank"
+                  href="https://www.strava.com/athletes/47513264"
+                  className="group relative"
+                >
+                  <p className="cursor-pointer">Strava</p>
+                  <div
+                    style={{
+                      transition: "width 0.2s ease-in-out",
+                    }}
+                    className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
+                  />
+                </Link>
               </Magnetic>
             </div>
           </div>

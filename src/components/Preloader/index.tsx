@@ -2,21 +2,24 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anim";
+import { useRouter } from "next/router";
 
 const words = [
   "Hello",
-  "Bonjour",
+  "Hola",
   "Ciao",
-  "Olà",
   "やあ",
-  "Hallå",
+  "moï",
   "Guten tag",
-  "Hallo",
+  "Xin chào",
+  "Bonjour",
 ];
 
 export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
+
+  const router = useRouter();
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
@@ -93,15 +96,28 @@ export default function Preloader() {
     >
       {dimension.width > 0 && (
         <>
-          <motion.p
-            className="absolute z-10 flex cursor-wait items-center text-5xl text-white"
-            variants={opacity}
-            initial="initial"
-            animate="enter"
-          >
-            <span className="mr-3 block h-3 w-3 rounded-[50%] bg-white" />
-            {words[index]}
-          </motion.p>
+          {router.pathname === "/contact" ? (
+            <motion.p
+              className="absolute z-10 flex cursor-wait items-center text-5xl text-white"
+              variants={opacity}
+              initial="initial"
+              animate="enter"
+            >
+              <span className="mr-3 block h-3 w-3 rounded-[50%] bg-white" />
+              Contact me
+            </motion.p>
+          ) : (
+            <motion.p
+              className="absolute z-10 flex cursor-wait items-center text-5xl text-white"
+              variants={opacity}
+              initial="initial"
+              animate="enter"
+            >
+              <span className="mr-3 block h-3 w-3 rounded-[50%] bg-white" />
+              {words[index]}
+            </motion.p>
+          )}
+
           <svg className="absolute top-0 h-[calc(100%+300px)] w-full">
             <motion.path
               className="fill-dark"
