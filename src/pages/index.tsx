@@ -121,7 +121,6 @@ export default function Home() {
     <>
       <Layout>
         <Header />
-        index
         <Hero />
         <BuildSomething />
         <Help />

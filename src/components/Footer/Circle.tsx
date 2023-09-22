@@ -8,7 +8,7 @@ const Circle = () => {
     target: container,
     offset: ["start end", "end start"],
   });
-  const height = useTransform(scrollYProgress, [0, 1], [96, 0]);
+  const height = useTransform(scrollYProgress, [0, 0.9], [96, 0]);
   return (
     <>
       <motion.div

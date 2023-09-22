@@ -57,7 +57,12 @@ const Layout = (props: PropsWithChildren) => {
             key={router.route}
             className="min-h-screen max-w-[100vw]"
           >
-            <main className="relative min-h-[64.4vh] overflow-hidden">
+            <main
+              className={`relative min-h-[64.4vh] overflow-hidden ${
+                router.route === "/contact" && "bg-dark text-white"
+              }`}
+              // 141517
+            >
               {props.children}
             </main>
           </motion.div>

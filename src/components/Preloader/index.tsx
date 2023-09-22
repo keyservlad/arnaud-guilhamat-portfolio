@@ -92,7 +92,7 @@ export default function Preloader() {
       animate="enter"
       exit="exit"
       key={"preloader"}
-      className="fixed z-[99999] flex h-screen w-screen cursor-wait items-center justify-center bg-dark"
+      className="fixed z-[99999] flex h-screen w-screen cursor-wait items-center justify-center bg-[#141517]"
     >
       {dimension.width > 0 && (
         <>
@@ -120,7 +120,7 @@ export default function Preloader() {
 
           <svg className="absolute top-0 h-[calc(100%+300px)] w-full">
             <motion.path
-              className="fill-dark"
+              className="fill-[#141517]"
               variants={curve}
               initial="initial"
               exit="exit"
@@ -128,7 +128,7 @@ export default function Preloader() {
           </svg>
           <svg className="absolute -top-[300px] h-[calc(100%+300px)] w-full">
             <motion.path
-              className="fill-dark"
+              className="fill-[#141517]"
               variants={upperCurve}
               initial="initial"
               animate="enter"
