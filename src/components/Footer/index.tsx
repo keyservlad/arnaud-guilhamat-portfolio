@@ -1,9 +1,8 @@
 import Image from "next/legacy/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useScroll, motion, useTransform } from "framer-motion";
 import ProfilePic from "~/public/images/footer/profile.jpg";
 import Rounded from "../common/RoundedButton";
-import Magnetic from "../common/Magnetic";
 import Circle from "./Circle";
 import Link from "next/link";
 import ActualFooter from "./AcutalFooter";
