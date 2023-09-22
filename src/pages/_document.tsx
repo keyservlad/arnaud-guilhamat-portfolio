@@ -12,7 +12,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="data-scroll-container">
+        <body className="data-scroll-container overflow-hidden">
           <Main />
           <NextScript />
         </body>

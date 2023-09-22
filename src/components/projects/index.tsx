@@ -265,7 +265,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               <h4>{project.title}</h4>
               <div className="flex flex-row gap-1">
                 {project.github && (
-                  <Magnetic str={0.2}>
+                  <Magnetic str={0.25}>
                     <motion.div
                       whileHover={{
                         scale: 1.15,
@@ -295,7 +295,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   </Magnetic>
                 )}
                 {project.live && (
-                  <Magnetic str={0.2}>
+                  <Magnetic str={0.25}>
                     <motion.div
                       whileHover={{
                         scale: 1.15,

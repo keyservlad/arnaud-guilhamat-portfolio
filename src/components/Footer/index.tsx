@@ -6,6 +6,7 @@ import Rounded from "../common/RoundedButton";
 import Magnetic from "../common/Magnetic";
 import Circle from "./Circle";
 import Link from "next/link";
+import ActualFooter from "./AcutalFooter";
 
 export default function Footer() {
   const container = useRef(null);
@@ -17,34 +18,6 @@ export default function Footer() {
   const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
 
-  const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString("fr-FR", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-      timeZoneName: "short",
-      timeZone: "Europe/Paris",
-    }),
-  );
-
-  useEffect(() => {
-    // Update the time every second (1000 milliseconds)
-    const intervalId = setInterval(() => {
-      setCurrentTime(
-        new Date().toLocaleTimeString("fr-FR", {
-          hour: "numeric",
-          minute: "numeric",
-          hour12: true,
-          timeZoneName: "short",
-          timeZone: "Europe/Paris",
-        }),
-      );
-    }, 1000);
-
-    // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <>
       <Circle />
@@ -54,7 +27,7 @@ export default function Footer() {
         ref={container}
         className="relative flex flex-col items-center justify-center bg-dark text-white"
       >
-        <footer className="w-full max-w-[1800px] bg-dark pt-44">
+        <div className="w-full max-w-[1800px] bg-dark pt-44">
           <div className="relative mx-[200px] border-b border-b-[#868686] pb-[100px]">
             <span className="flex items-center">
               <div className="relative h-[100px] w-[100px] overflow-hidden rounded-full">
@@ -130,89 +103,8 @@ export default function Footer() {
               </Rounded>
             </Link>
           </div>
-          <div className="mt-32 flex justify-between p-5">
-            <div className="flex items-end gap-6">
-              <span className="flex flex-col gap-4">
-                <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
-                  Version
-                </h3>
-                <p>© 2023</p>
-              </span>
-              <span className="flex flex-col gap-4">
-                <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
-                  Local time
-                </h3>
-                <p>{currentTime}</p>
-              </span>
-            </div>
-            <div className="flex items-end gap-4">
-              <span className="flex flex-col gap-4">
-                <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
-                  Socials
-                </h3>
-                <Magnetic>
-                  <Link
-                    target="_blank"
-                    href="https://github.com/keyservlad"
-                    className="group relative"
-                  >
-                    <p className="cursor-pointer">GitHub</p>
-                    <div
-                      style={{
-                        transition: "width 0.2s ease-in-out",
-                      }}
-                      className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
-                    />
-                  </Link>
-                </Magnetic>
-              </span>
-              <Magnetic>
-                <Link
-                  target="_blank"
-                  href="https://github.com/keyservlad"
-                  className="hover group"
-                >
-                  <p className="cursor-pointer">LinkedIn</p>
-                  <div
-                    style={{
-                      transition: "width 0.2s ease-in-out",
-                    }}
-                    className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
-                  />
-                </Link>
-              </Magnetic>
-              <Magnetic>
-                <Link
-                  href="mailto:arnaud.guilhamat@emovin.fr"
-                  className="group relative"
-                >
-                  <p className="cursor-pointer">Email</p>
-                  <div
-                    style={{
-                      transition: "width 0.2s ease-in-out",
-                    }}
-                    className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
-                  />
-                </Link>
-              </Magnetic>
-              <Magnetic>
-                <Link
-                  target="_blank"
-                  href="https://www.strava.com/athletes/47513264"
-                  className="group relative"
-                >
-                  <p className="cursor-pointer">Strava</p>
-                  <div
-                    style={{
-                      transition: "width 0.2s ease-in-out",
-                    }}
-                    className="absolute left-1/2 block h-px w-0 -translate-x-1/2 bg-white group-hover:w-full"
-                  />
-                </Link>
-              </Magnetic>
-            </div>
-          </div>
-        </footer>
+          <ActualFooter />
+        </div>
       </motion.div>
     </>
   );

@@ -47,7 +47,7 @@ export default function NavItem({
         animate={isActive ? "open" : "closed"}
         className="absolute -left-7 h-[10px] w-[10px] scale-0 rounded-full bg-white"
       />
-      <Magnetic str={0.1}>
+      <Magnetic str={0.25}>
         {type === "link" ? (
           <Link
             onClick={() => {

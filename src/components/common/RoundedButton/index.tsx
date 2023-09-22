@@ -62,7 +62,7 @@ export default function Rounded({
           manageMouseLeave();
         }}
       >
-        <Magnetic str={0.2}>
+        <Magnetic str={0.25}>
           <div
             className={
               style ??

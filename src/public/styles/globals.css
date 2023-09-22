@@ -4,7 +4,7 @@
 
 @layer components {
   html {
-    @apply box-border font-montserat text-base font-light leading-5 text-[#333];
+    @apply box-border overflow-hidden font-montserat text-base font-light leading-5 text-[#333];
   }
 
   h1 {

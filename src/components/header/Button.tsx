@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { usePathname } from "next/navigation";
 import Magnetic from "../common/Magnetic";
 import { useAppContext } from "~/context/appContext";
+import { useRouter } from "next/router";
 
 const Button = () => {
   const { isMenuOpen, setIsMenuOpen, setIsLocomotiveScroll } = useAppContext();
@@ -11,6 +12,7 @@ const Button = () => {
   const menuButton = useRef<HTMLButtonElement | null>(null);
 
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     closeMenu();
@@ -26,7 +28,11 @@ const Button = () => {
         scrollTrigger: {
           trigger: document.documentElement,
           start: 0,
-          end: window.innerHeight * 0.4,
+          end:
+            router.pathname === "/contact"
+              ? window.innerHeight * 0.2
+              : window.innerHeight * 0.4,
+
           onLeave: () => {
             gsap.to(container.current, {
               scale: 1,
@@ -120,7 +126,7 @@ const Button = () => {
               isMenuOpen ? "bg-[#455CE9]" : "bg-dark"
             }`}
           >
-            <Magnetic str={0.2}>
+            <Magnetic str={0.25}>
               <div
                 className={
                   "relative flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full"
