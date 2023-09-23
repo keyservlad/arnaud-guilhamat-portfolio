@@ -20,7 +20,7 @@ export function TypingText({ text }: { text: string }) {
   }, [i]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <h1 className="font-display mt-[10px] min-w-[420px] font-extrabold drop-shadow-sm">
+    <h1 className="mt-[10px] min-w-[420px] text-3xl drop-shadow-sm md:text-[2.75rem] md:font-extrabold">
       {displayedText ? displayedText : <>&nbsp;</>}
     </h1>
   );

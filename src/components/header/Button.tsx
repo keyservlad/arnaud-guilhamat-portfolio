@@ -106,15 +106,39 @@ const Button = () => {
   }
   return (
     <>
-      <div ref={container} className="fixed right-7 top-7 z-50 scale-0">
+      <div
+        id="containerMenuButton"
+        ref={container}
+        className="fixed right-7 top-7 z-50 scale-0"
+      >
         <Magnetic>
           <button
             ref={(el) => {
               menuButton.current = el;
             }}
+            id="menuButton"
             onClick={() => {
               if (isMenuOpen) setIsLocomotiveScroll(true);
               setIsMenuOpen(!isMenuOpen);
+              if (isMenuOpen) {
+                const end =
+                  router.pathname === "/contact"
+                    ? window.innerHeight * 0.2
+                    : window.innerHeight * 0.3;
+                if (window.scrollY <= end) {
+                  gsap.to(menuButton.current, {
+                    scale: 0,
+                    duration: 0.25,
+                    ease: "power1.out",
+                  });
+                  gsap.to(container.current, {
+                    scale: 0,
+                    duration: 0.25,
+                    ease: "power1.out",
+                    delay: 0.25,
+                  });
+                }
+              }
             }}
             onMouseEnter={() => {
               manageMouseEnter();

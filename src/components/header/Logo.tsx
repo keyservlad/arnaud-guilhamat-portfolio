@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Logo = () => {
   return (
-    <div className="my-2 aspect-square w-16">
+    <div className="my-2 w-16 aspect-[1/1]">
       <Link href="/">
         <svg
           id="Layer_2"

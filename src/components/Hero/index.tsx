@@ -8,9 +8,9 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="flex min-h-[80vh] flex-col justify-center bg-white">
-      <div className="lg:px-0 mx-auto flex max-w-[940px] flex-col-reverse items-center justify-center px-5 sm:px-16 md:px-32 lg:flex-row">
-        <div className="flex flex-col items-center justify-center text-center lg:pl-6 lg:pr-14 lg:text-left lg:items-start">
+    <div className="flex min-h-[80vh] max-w-[100vw] flex-col justify-center bg-white">
+      <div className="mx-auto flex w-full max-w-[940px] flex-col-reverse items-center justify-center px-5 sm:px-16 md:px-32 lg:flex-row lg:px-0">
+        <div className="flex w-full flex-col items-center justify-center text-center lg:items-start lg:pl-6 lg:pr-14 lg:text-left">
           <h4 className="mb-[6px]">
             <motion.span
               key={`wave`}
@@ -30,7 +30,7 @@ const Hero = () => {
             Hi! my name is Arnaud Guilhamat & I am a
           </h4>
           <TypingText text={"Fullstack developer"} />
-          <p>
+          <p className="mb-5 text-left md:mb-[10px] md:text-center">
             Crafting Exceptional Digital Experiences. Transforming Complex
             Problems into Simple Solutions.
           </p>
@@ -38,7 +38,7 @@ const Hero = () => {
             <Magnetic>
               <Link
                 href={"/contact"}
-                className="relative z-10 flex cursor-pointer self-start rounded-lg border border-black bg-black px-10 py-4 font-bold text-white hover:border-black hover:bg-white hover:text-black"
+                className="relative z-10 flex cursor-pointer items-center justify-center self-start rounded-lg border border-black bg-black px-4 py-4 text-sm font-bold text-white hover:border-black hover:bg-white hover:text-black md:px-10"
               >
                 Contact Me
                 <svg
@@ -48,7 +48,7 @@ const Hero = () => {
                   width="1em"
                   height="1em"
                   viewBox="0 0 24 24"
-                  className="ml-2 text-lg"
+                  className="ml-1 text-lg md:ml-2"
                 >
                   <path
                     fill="none"
@@ -68,7 +68,7 @@ const Hero = () => {
                 onClick={() => {
                   window.open("/pdf/cv.pdf", "_blank");
                 }}
-                className="flex cursor-pointer items-center self-center rounded-lg border border-slate-200 bg-white px-10 py-4 font-bold text-black hover:border-black hover:bg-black hover:text-white hover:shadow-custom"
+                className="flex cursor-pointer items-center justify-center self-center rounded-lg border border-slate-200 bg-white px-4 py-4 text-sm font-bold text-black hover:border-black hover:bg-black hover:text-white hover:shadow-custom md:px-10"
               >
                 Download CV
                 <svg
@@ -78,7 +78,7 @@ const Hero = () => {
                   width="1em"
                   height="1em"
                   viewBox="0 0 24 24"
-                  className="ml-2 text-lg"
+                  className="ml-1 text-lg md:ml-2"
                 >
                   <path
                     fill="currentColor"
@@ -92,7 +92,7 @@ const Hero = () => {
           </div>
         </div>
         <Magnetic>
-          <div className="relative h-[350px] w-[350px] lg:h-[380px] lg:w-[380px]">
+          <div className="relative m-auto h-[250px] w-[250px] md:h-[350px] md:w-[350px] lg:h-[380px] lg:w-[380px]">
             <Image
               src={ImageHero}
               alt="Picture of the author"
