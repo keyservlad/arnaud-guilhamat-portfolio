@@ -19,6 +19,8 @@ export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
+  const curveHeight = dimension.width > 768 ? 300 : 200;
+
   const router = useRouter();
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export default function Preloader() {
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height
-  } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
+  } Q${dimension.width / 2} ${dimension.height + curveHeight} 0 ${
     dimension.height
   }  L0 0`;
   const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
@@ -55,24 +57,24 @@ export default function Preloader() {
     },
   };
 
-  const initialUpperCurvePath = `M0 300 Q${dimension.width / 2} 300 ${
-    dimension.width
-  } 300 L${dimension.width} ${dimension.height + 300} L0 ${
-    dimension.height + 300
-  } L0 300`;
+  const initialUpperCurvePath = `M0 ${curveHeight} Q${
+    dimension.width / 2
+  } ${curveHeight} ${dimension.width} ${curveHeight} L${dimension.width} ${
+    dimension.height + curveHeight
+  } L0 ${dimension.height + curveHeight} L0 ${curveHeight}`;
 
   // Note à moi meme : si tu veux faire une courbe en haut, il faut que le point de controle soit POSITIF
   // const targetUpperCurvePath = `M${dimension.width} ${dimension.height} L0 ${
   //   dimension.height
-  // } L0 0 Q${dimension.width / 2} -300 ${dimension.width} 0 L${
+  // } L0 0 Q${dimension.width / 2} -${curveHeight} ${dimension.width} 0 L${
   //   dimension.width
   // } ${dimension.height}`;
 
-  const targetUpperCurvePath2 = `M0 300 Q${dimension.width / 2} 0 ${
+  const targetUpperCurvePath2 = `M0 ${curveHeight} Q${dimension.width / 2} 0 ${
     dimension.width
-  } 300 L${dimension.width} ${dimension.height + 300} L0 ${
-    dimension.height + 300
-  } L0 300`;
+  } ${curveHeight} L${dimension.width} ${dimension.height + curveHeight} L0 ${
+    dimension.height + curveHeight
+  } L0 ${curveHeight}`;
 
   const upperCurve = {
     initial: {
@@ -118,17 +120,21 @@ export default function Preloader() {
             </motion.p>
           )}
 
-          <svg className="absolute top-0 h-[calc(100%+300px)] w-full">
+          <svg
+            className={`absolute top-0 z-[9999999] h-[calc(100%+${curveHeight}px)] w-full`}
+          >
             <motion.path
-              className="fill-[#141517]"
+              className="fill-green-500"
               variants={curve}
               initial="initial"
               exit="exit"
             />
           </svg>
-          <svg className="absolute -top-[300px] h-[calc(100%+300px)] w-full">
+          <svg
+            className={`absolute -top-[${curveHeight}px] z-[9999999] h-[calc(100%+${curveHeight}px)] w-full`}
+          >
             <motion.path
-              className="fill-[#141517]"
+              className="fill-blue-500"
               variants={upperCurve}
               initial="initial"
               animate="enter"

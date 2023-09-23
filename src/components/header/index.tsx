@@ -17,7 +17,7 @@ const Header = () => {
               <Logo />
             </div>
           </Magnetic>
-          <nav className="flex h-full flex-row items-center">
+          <nav className="md:flex h-full flex-row items-center hidden">
             <Link
               className="mx-1 inline-block cursor-pointer border-b-2 border-transparent px-4 py-8 font-bold hover:border-black"
               href={"/"}
