@@ -51,7 +51,7 @@ export default function AppProvider({ children }: any) {
         const LocomotiveScroll = (await import("locomotive-scroll")).default;
         locomotiveScrollRef.current = new LocomotiveScroll({
           lenisOptions: {
-            touchMultiplier: 1.75,
+            touchMultiplier: 1.5,
             smoothTouch: true,
           },
         });

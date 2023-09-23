@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anim";
 import { useRouter } from "next/router";
@@ -19,12 +19,16 @@ export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
-  const curveHeight = dimension.width > 768 ? 300 : 200;
+  let curveHeight = useRef(300);
 
   const router = useRouter();
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
+
+    if (window.innerWidth < 768) {
+      curveHeight.current = 200;
+    }
   }, []);
 
   useEffect(() => {
@@ -39,7 +43,7 @@ export default function Preloader() {
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height
-  } Q${dimension.width / 2} ${dimension.height + curveHeight} 0 ${
+  } Q${dimension.width / 2} ${dimension.height + curveHeight.current} 0 ${
     dimension.height
   }  L0 0`;
   const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
@@ -57,24 +61,26 @@ export default function Preloader() {
     },
   };
 
-  const initialUpperCurvePath = `M0 ${curveHeight} Q${
+  const initialUpperCurvePath = `M0 ${curveHeight.current} Q${
     dimension.width / 2
-  } ${curveHeight} ${dimension.width} ${curveHeight} L${dimension.width} ${
-    dimension.height + curveHeight
-  } L0 ${dimension.height + curveHeight} L0 ${curveHeight}`;
+  } ${curveHeight.current} ${dimension.width} ${curveHeight.current} L${
+    dimension.width
+  } ${dimension.height + curveHeight.current} L0 ${
+    dimension.height + curveHeight.current
+  } L0 ${curveHeight.current}`;
 
   // Note à moi meme : si tu veux faire une courbe en haut, il faut que le point de controle soit POSITIF
   // const targetUpperCurvePath = `M${dimension.width} ${dimension.height} L0 ${
   //   dimension.height
-  // } L0 0 Q${dimension.width / 2} -${curveHeight} ${dimension.width} 0 L${
+  // } L0 0 Q${dimension.width / 2} -${curveHeight.current} ${dimension.width} 0 L${
   //   dimension.width
   // } ${dimension.height}`;
 
-  const targetUpperCurvePath2 = `M0 ${curveHeight} Q${dimension.width / 2} 0 ${
-    dimension.width
-  } ${curveHeight} L${dimension.width} ${dimension.height + curveHeight} L0 ${
-    dimension.height + curveHeight
-  } L0 ${curveHeight}`;
+  const targetUpperCurvePath2 = `M0 ${curveHeight.current} Q${
+    dimension.width / 2
+  } 0 ${dimension.width} ${curveHeight.current} L${dimension.width} ${
+    dimension.height + curveHeight.current
+  } L0 ${dimension.height + curveHeight.current} L0 ${curveHeight.current}`;
 
   const upperCurve = {
     initial: {
@@ -121,20 +127,20 @@ export default function Preloader() {
           )}
 
           <svg
-            className={`absolute top-0 z-[9999999] h-[calc(100%+${curveHeight}px)] w-full`}
+            className={`absolute top-0 h-[calc(100%+${curveHeight.current}px)] w-full`}
           >
             <motion.path
-              className="fill-green-500"
+              className="fill-dark"
               variants={curve}
               initial="initial"
               exit="exit"
             />
           </svg>
           <svg
-            className={`absolute -top-[${curveHeight}px] z-[9999999] h-[calc(100%+${curveHeight}px)] w-full`}
+            className={`absolute -top-[${curveHeight.current}px] h-[calc(100%+${curveHeight.current}px)] w-full`}
           >
             <motion.path
-              className="fill-blue-500"
+              className="fill-dark"
               variants={upperCurve}
               initial="initial"
               animate="enter"
