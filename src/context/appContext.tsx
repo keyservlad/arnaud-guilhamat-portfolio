@@ -12,7 +12,7 @@ interface AppContextProps {
   scrollToId: (id: string) => void;
   setScrollRouting: React.Dispatch<React.SetStateAction<any>>;
   scrollRouting: string | null;
-}
+  }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
@@ -51,6 +51,7 @@ export default function AppProvider({ children }: any) {
         const LocomotiveScroll = (await import("locomotive-scroll")).default;
         locomotiveScrollRef.current = new LocomotiveScroll({
           lenisOptions: {
+            touchMultiplier: 2,
             smoothTouch: true,
           },
         });
@@ -84,7 +85,7 @@ export default function AppProvider({ children }: any) {
         scrollToId,
         setScrollRouting,
         scrollRouting,
-      }}
+              }}
     >
       {children}
     </AppContext.Provider>
