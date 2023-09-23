@@ -31,7 +31,7 @@ const Button = () => {
           end:
             router.pathname === "/contact"
               ? window.innerHeight * 0.2
-              : window.innerHeight * 0.4,
+              : window.innerHeight * 0.3,
 
           onLeave: () => {
             gsap.to(container.current, {

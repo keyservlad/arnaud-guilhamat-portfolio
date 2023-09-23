@@ -9,8 +9,8 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <div className="flex min-h-[80vh] flex-col justify-center bg-white">
-      <div className="mx-auto flex max-w-[940px] flex-row items-center justify-center">
-        <div className="flex flex-col justify-center pl-6 pr-14">
+      <div className="lg:px-0 mx-auto flex max-w-[940px] flex-col-reverse items-center justify-center px-5 sm:px-16 md:px-32 lg:flex-row">
+        <div className="flex flex-col items-center justify-center text-center lg:pl-6 lg:pr-14 lg:text-left lg:items-start">
           <h4 className="mb-[6px]">
             <motion.span
               key={`wave`}
@@ -92,13 +92,11 @@ const Hero = () => {
           </div>
         </div>
         <Magnetic>
-          <div className="relative">
+          <div className="relative h-[350px] w-[350px] lg:h-[380px] lg:w-[380px]">
             <Image
               src={ImageHero}
               alt="Picture of the author"
-              width={600}
-              height={600}
-              layout="intrinsic"
+              layout="fill"
               objectFit="contain"
               objectPosition="center"
               placeholder="blur"

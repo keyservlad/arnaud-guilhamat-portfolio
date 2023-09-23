@@ -49,7 +49,11 @@ export default function AppProvider({ children }: any) {
     (async () => {
       if (!locomotiveScrollRef.current) {
         const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        locomotiveScrollRef.current = new LocomotiveScroll();
+        locomotiveScrollRef.current = new LocomotiveScroll({
+          lenisOptions: {
+            smoothTouch: true,
+          },
+        });
       }
       disableScroll();
     })();
