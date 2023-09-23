@@ -61,7 +61,6 @@ const Layout = (props: PropsWithChildren) => {
               className={`relative min-h-[64.4vh] overflow-hidden ${
                 router.route === "/contact" && "bg-dark text-white"
               }`}
-              // 141517
             >
               {props.children}
             </main>

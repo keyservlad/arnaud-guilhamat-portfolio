@@ -127,7 +127,11 @@ export default function Preloader() {
           )}
 
           <svg
-            className={`absolute top-0 h-[calc(100%+${curveHeight.current}px)] w-full`}
+            className={`absolute top-0 w-full ${
+              curveHeight.current === 200
+                ? "h-[calc(100%+200px)]"
+                : "h-[calc(100%+300px)]"
+            }`}
           >
             <motion.path
               className="fill-dark"
@@ -137,7 +141,11 @@ export default function Preloader() {
             />
           </svg>
           <svg
-            className={`absolute -top-[${curveHeight.current}px] h-[calc(100%+${curveHeight.current}px)] w-full`}
+            className={`absolute w-full ${
+              curveHeight.current === 200
+                ? "-top-[200px] h-[calc(100%+200px)]"
+                : "-top-[300px] h-[calc(100%+30000px)]"
+            }`}
           >
             <motion.path
               className="fill-dark"
