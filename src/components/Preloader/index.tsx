@@ -19,7 +19,7 @@ export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
-  let curveHeight = useRef(300);
+  const curveHeight = useRef(300);
 
   const router = useRouter();
 
