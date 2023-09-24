@@ -11,7 +11,7 @@ const Temoignage = () => {
     margin: "0px 0px -40px 0px",
   });
   return (
-    <div className="w-full">
+    <div className="relative w-full z-20 bg-white">
       <div
         className={`relative mx-auto flex max-w-[940px] flex-col items-center justify-center bg-contain bg-scroll bg-center bg-no-repeat py-20`}
       >
@@ -22,7 +22,7 @@ const Temoignage = () => {
           animate={isInView ? "show" : "hidden"}
           className="z-10"
         >
-          <p className="mx-auto mb-[10px] mt-0 max-w-[493px] text-center">
+          <p className="mx-auto mb-[10px] mt-0 max-w-[493px] text-center px-10 sm:px-0">
             Responsible, very involved and eager for new knowledge Arnaud is a
             driving force that loves challenges and getting involved in new
             projects. Endowed with a strong team spirit, he always knew how to

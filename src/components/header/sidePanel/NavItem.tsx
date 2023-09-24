@@ -45,7 +45,7 @@ export default function NavItem({
       <motion.div
         variants={scale}
         animate={isActive ? "open" : "closed"}
-        className="absolute -left-7 h-[10px] w-[10px] scale-0 rounded-full bg-white"
+        className="absolute right-5 sm:-left-7 h-[10px] w-[10px] scale-0 rounded-full bg-white"
       />
       <Magnetic str={0.25}>
         {type === "link" ? (

@@ -68,7 +68,7 @@ export default function Gallery({
       onMouseMove={(e) => {
         moveItems(e.clientX, e.clientY);
       }}
-      className="items-center flex flex-col py-72"
+      className="items-center flex-col pt-20 hidden lg:flex"
     >
       <div className="flex w-full flex-col items-center justify-center pb-24">
         {sections.map((section, index) => {

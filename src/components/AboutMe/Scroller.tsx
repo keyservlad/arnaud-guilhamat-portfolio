@@ -13,7 +13,7 @@ import {
 import { useRef } from "react";
 
 interface ParallaxProps {
-  children: string;
+  children: React.ReactNode;
   baseVelocity: number;
 }
 
@@ -68,7 +68,7 @@ export function Scroller() {
       <div className="flex flex-nowrap overflow-hidden whitespace-nowrap tracking-tighter">
         <motion.p
           key={"parallax-text"}
-          className="flex flex-nowrap whitespace-nowrap text-center text-4xl font-bold uppercase tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
+          className="flex flex-nowrap whitespace-nowrap text-center text-xl lg:text-4xl font-bold uppercase tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
           style={{ x }}
         >
           <span>{children} </span>
@@ -83,10 +83,27 @@ export function Scroller() {
       </div>
     );
   }
+
+  // if we are on mobile text = "SCROLL SCROLL" else text = "SCROLL SCROLL&nbsp;"
+
+  // const text1 = <>SCROLL SCROLL&nbsp;</>
+
+  const text1 =
+    window.innerWidth < 1024 ? (
+      <>SPORTS TECH TRAVEL&nbsp;</>
+    ) : (
+      <>SCROLL SCROLL&nbsp;</>
+    );
+  const text2 =
+    window.innerWidth < 1024 ? (
+      <>SPORTS TECH TRAVEL&nbsp;</>
+    ) : (
+      <>Explore with MOUSE&nbsp;</>
+    );
   return (
-    <section>
-      <ParallaxText baseVelocity={1.5}>SCROLL SCROLL&nbsp;</ParallaxText>
-      <ParallaxText baseVelocity={-1.5}>Explore with MOUSE&nbsp;</ParallaxText>
+    <section className="">
+      <ParallaxText baseVelocity={1.5}>{text1}</ParallaxText>
+      <ParallaxText baseVelocity={-1.5}>{text2}</ParallaxText>
     </section>
   );
 }

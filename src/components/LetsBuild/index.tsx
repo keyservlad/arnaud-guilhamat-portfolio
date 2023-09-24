@@ -20,7 +20,7 @@ const BuildSomething = () => {
 
   return (
     <div className="block w-full bg-[#f7f7fa]">
-      <div className="mx-auto flex max-w-[940px] flex-col items-center justify-center p-32">
+      <div className="mx-auto flex max-w-[940px] flex-col items-center justify-center px-5 sm:px-16 md:px-32 py-32">
         <div>
           <motion.h2
             variants={container}

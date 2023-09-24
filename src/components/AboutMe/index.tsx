@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 import { container, item } from "../common/animText/animate";
+import MobileVersion from "./Gallery/MobileVersion";
 
 interface GalleryProps {
   moveItems: (x: number, y: number) => void;
@@ -45,8 +46,11 @@ const AboutMe = ({
   });
   return (
     <>
-      <div id="about-me" className="relative z-20 block w-full bg-[#f7f7fa]">
-        <div className="mx-auto flex max-w-[940px] flex-col items-center justify-center pb-10 pt-32">
+      <div
+        id="about-me"
+        className="relative z-20 block w-full bg-[#f7f7fa] py-32"
+      >
+        <div className="mx-auto flex max-w-[940px] flex-col items-center justify-center ">
           <motion.h2
             ref={containerRef}
             variants={container}
@@ -73,6 +77,7 @@ const AboutMe = ({
           setSections={setSections}
           growCursor={growCursor}
         />
+        <MobileVersion />
       </div>
     </>
   );

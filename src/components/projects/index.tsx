@@ -81,7 +81,7 @@ const Projects = () => {
 
   return (
     <div id="my-works" className="bg-[#f7f7fa]">
-      <div className="mx-auto flex max-w-[940px] flex-col items-center justify-between pb-10 pt-20">
+      <div className="mx-auto flex max-w-[940px] flex-col items-center justify-between px-5 py-32 sm:px-16">
         <motion.div
           ref={containerRef}
           variants={FADE_UP_ANIMATION_VARIANTS}
@@ -94,7 +94,7 @@ const Projects = () => {
               variants={container}
               initial="hidden"
               animate={isInView ? "show" : "hidden"}
-              className="max-w-md text-left"
+              className="max-w-md text-left text-2xl font-bold lg:text-[2rem] lg:leading-9"
             >
               {title.split(" ").map((word, i) => (
                 <motion.span
@@ -137,7 +137,7 @@ const Projects = () => {
               </svg>
             </Link>
           </div>
-          <div className="relative inline-block max-w-full align-middle">
+          <div className="relative hidden max-w-full align-middle md:inline-block">
             <Image
               src={ImageProjects}
               alt="illustration on notebook and coffee"
@@ -150,7 +150,7 @@ const Projects = () => {
           </div>
         </motion.div>
         <div className="mb-6 mt-0 flex flex-row items-center justify-between gap-x-8">
-          <div className="mx-4 grid w-full grid-cols-2 gap-16 gap-y-32">
+          <div className="mx-4 grid w-full grid-cols-1 gap-16 gap-y-32 md:grid-cols-2">
             {projects.map((item, index) => (
               <ProjectCard key={index} project={item} />
             ))}
@@ -206,7 +206,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           variants={FADE_UP_ANIMATION_VARIANTS}
           initial="hidden"
           animate={isInView1 ? "show" : "hidden"}
-          className="items-middle relative flex aspect-[16/9] w-full max-w-full items-center justify-center rounded-lg border border-slate-200 bg-white"
+          className="items-middle relative flex w-full max-w-full items-center justify-center rounded-lg border border-slate-200 bg-white aspect-[16/9]"
         >
           <AppleIconsAbsolute />
           <div className="relative m-auto">

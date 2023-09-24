@@ -37,7 +37,7 @@ const BuildSomething = () => {
 
   return (
     <div className="block w-full bg-white">
-      <div className="items-center mx-auto flex max-w-[940px] flex-col justify-center p-32">
+      <div className="mx-auto flex max-w-[940px] flex-col items-center justify-center px-5 py-32 sm:px-16 md:px-32">
         <div ref={containerRef}>
           <motion.h2
             variants={container}
@@ -63,8 +63,8 @@ const BuildSomething = () => {
             animate={isInView2 ? "show" : "hidden"}
           >
             I successfully completed{" "}
-            <span className="font-bold">two master&#39;s degrees</span>, the first
-            at the <span className="font-bold">engineering school</span>{" "}
+            <span className="font-bold">two master&#39;s degrees</span>, the
+            first at the <span className="font-bold">engineering school</span>{" "}
             <Link
               target="_blank"
               href={"https://www.isep.fr"}
