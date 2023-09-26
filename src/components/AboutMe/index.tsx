@@ -15,6 +15,7 @@ interface GalleryProps {
     color: string;
     cursorText: string;
     images: StaticImageData[];
+    text: JSX.Element;
   }[];
   setSections: React.Dispatch<
     React.SetStateAction<
@@ -24,6 +25,7 @@ interface GalleryProps {
         color: string;
         cursorText: string;
         images: StaticImageData[];
+        text: JSX.Element;
       }[]
     >
   >;

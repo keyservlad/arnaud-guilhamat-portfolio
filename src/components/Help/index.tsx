@@ -6,6 +6,7 @@ import {
   FADE_UP_ANIMATION_VARIANTS,
 } from "../common/animText/animate";
 import Link from "next/link";
+import TechStack from "./TechStack";
 
 const BuildSomething = () => {
   const title = "How can I help?";
@@ -142,8 +143,17 @@ const BuildSomething = () => {
             ref={containerRef6}
             animate={isInView6 ? "show" : "hidden"}
           >
-            Here is a list of the main tools i use and technical knowledge:
+            Here is my ideal stack with the tools I like using the most:
           </motion.p>
+
+          <motion.div
+            variants={FADE_UP_ANIMATION_VARIANTS}
+            initial="hidden"
+            ref={containerRef6}
+            animate={isInView6 ? "show" : "hidden"}
+          >
+            <TechStack />
+          </motion.div>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ interface SectionProps {
   manageModal: (active: boolean, index: number, x: number, y: number) => void;
   imageList: StaticImageData[];
   setMainImageSrc: (index: number, src: StaticImageData) => void;
+  text: JSX.Element;
 }
 
 export default function Section({
@@ -16,6 +17,7 @@ export default function Section({
   manageModal,
   imageList,
   setMainImageSrc,
+  text,
 }: SectionProps) {
   const steps = useRef(0);
   const maxNumberOfImages = 3;
@@ -130,9 +132,9 @@ export default function Section({
       <h2 className="pointer-events-none m-0 text-6xl transition-all duration-[0.4s] group-hover:-translate-x-[10px]">
         {title}
       </h2>
-      <p className="pointer-events-none m-0 font-light transition-all duration-[0.4s] group-hover:translate-x-[10px]">
-        Design & Development
-      </p>
+      <div className="pointer-events-none m-0 font-light transition-all duration-[0.4s] group-hover:translate-x-[10px]">
+        {text}
+      </div>
       {imageList.map((image, index) => (
         <ImageQueue pushRef={pushRef} image={image} index={index} key={index} />
       ))}

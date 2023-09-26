@@ -45,7 +45,7 @@ const projects = [
   {
     title: "CHIRP",
     description:
-      "Twitter but only with emojis 🐦... fullstack project built with the T3 Stack with Next.js, Typescript, tRPC, Prisma, Tailwindcss, NextAuth. Hosted on Planetscale & Vercel",
+      "Twitter but only with emojis 🐦... fullstack project built with the T3 Stack with Next.js, Typescript, tRPC, Prisma, Tailwindcss, NextAuth. Hosted on Planetscale & Vercel.",
     logo: LogoTwitter,
     link: "/",
     github: "https://github.com/keyservlad/twitter-emojis-t3-stack",
@@ -54,7 +54,7 @@ const projects = [
   {
     title: "PORTFOLIO",
     description:
-      "Experienced with various B2B products, including Shopify, WP. Create appealing solutions for business clients.",
+      "Portfolio built with ❤️ with Next.js, TypeScript, Tailwindcss, Framer Motion, Locomotive Scroll. Hosted on Vercel.",
     logo: LogoAG,
     link: "/",
     github: "https://github.com/keyservlad/arnaud-guilhamat-portfolio",
@@ -63,7 +63,7 @@ const projects = [
   {
     title: "SKI FAMILY",
     description:
-      "Experienced with various B2B products, including Shopify, WP. Create appealing solutions for business clients.",
+      "Fullstack developer experience at Ski Family. Built with React, Django, Wagtail CMS.",
     logo: LogoSkiFamily,
     link: "/",
     github: undefined,
@@ -338,71 +338,71 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </div>
         </motion.div>
       </div>
-      <Link href={project.link} className="w-full">
-        <motion.div
-          variants={FADE_UP_ANIMATION_VARIANTS}
-          animate={isInView2 ? "show" : "hidden"}
-          whileHover={{
-            x: 10,
-            transition: {
-              repeat: Infinity,
-              repeatType: "reverse",
-              duration: 0.4,
-            },
-          }}
-          className="relative flex max-w-full items-start justify-start gap-x-[2px] p-3 pr-4 text-sm font-bold text-black"
+      {/* <Link href={project.link} className="w-full"> */}
+      <motion.div
+        variants={FADE_UP_ANIMATION_VARIANTS}
+        animate={isInView2 ? "show" : "hidden"}
+        whileHover={{
+          x: 10,
+          transition: {
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 0.4,
+          },
+        }}
+        className="relative flex w-full max-w-full cursor-pointer items-start justify-start gap-x-[2px] p-3 pr-4 text-sm font-bold text-black"
+      >
+        <div>Check it out</div>
+        <svg
+          ref={containerSVG}
+          id="Layer_3"
+          data-name="Layer 3"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 800 289.47"
+          className="ml-3 h-auto w-14"
         >
-          <div>Check it out</div>
-          <svg
-            ref={containerSVG}
-            id="Layer_3"
-            data-name="Layer 3"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 800 289.47"
-            className="ml-3 h-auto w-14"
-          >
-            <motion.path
-              key={`shadow1`}
-              id="shadows"
-              initial={{ opacity: 0, pathLength: 0 }}
-              animate={
-                isInViewSVG
-                  ? {
-                      opacity: 1,
-                      pathLength: 1,
-                      transition: {
-                        duration: 1,
-                        ease: "easeInOut",
-                      },
-                    }
-                  : { opacity: 0, pathLength: 0 }
-              }
-              className="fill-none stroke-black stroke-[20]"
-              d="m4.31,226.53c48.14,9.79,97.81,7.44,146.88,5.04,58.22-2.85,118.24-6.13,170.77-31.39,31.78-15.28,60.69-39.63,73.76-72.38,13.07-32.75,6.93-74.37-20.3-96.77-10.06-8.28-22.25-13.56-34.59-17.73-11.6-3.92-23.87-6.96-36.01-5.4-9.7,1.25-18.77,5.36-27.54,9.67-47.5,23.37-95.04,59.91-103.78,112.13-8.64,51.58,25.86,103.61,72.33,127.61s101.87,24.37,153.31,14.93,100.74-27.98,151.56-40.32c50.11-12.16,101.46-18.25,152.66-24.29"
-            />
-            <motion.path
-              key={`shadow2`}
-              id="shadows2"
-              initial={{ opacity: 0, pathLength: 0 }}
-              animate={
-                isInViewSVG
-                  ? {
-                      opacity: 1,
-                      pathLength: 1,
-                      transition: {
-                        duration: 0.5,
-                        delay: 1,
-                        ease: "easeInOut",
-                      },
-                    }
-                  : { opacity: 0, pathLength: 0 }
-              }
-              className="fill-none stroke-black stroke-[20]"
-              d="m644.66,146.34c14.3,17.87,38.29,23.89,58.96,33.73,13.52,6.44,26.1,14.88,37.18,24.96-8.09,10.9-20.84,17.15-33.12,22.93-16.28,7.67-32.62,15.21-49.02,22.64"
-            />
-          </svg>
-        </motion.div>
-      </Link>
+          <motion.path
+            key={`shadow1`}
+            id="shadows"
+            initial={{ opacity: 0, pathLength: 0 }}
+            animate={
+              isInViewSVG
+                ? {
+                    opacity: 1,
+                    pathLength: 1,
+                    transition: {
+                      duration: 1,
+                      ease: "easeInOut",
+                    },
+                  }
+                : { opacity: 0, pathLength: 0 }
+            }
+            className="fill-none stroke-black stroke-[20]"
+            d="m4.31,226.53c48.14,9.79,97.81,7.44,146.88,5.04,58.22-2.85,118.24-6.13,170.77-31.39,31.78-15.28,60.69-39.63,73.76-72.38,13.07-32.75,6.93-74.37-20.3-96.77-10.06-8.28-22.25-13.56-34.59-17.73-11.6-3.92-23.87-6.96-36.01-5.4-9.7,1.25-18.77,5.36-27.54,9.67-47.5,23.37-95.04,59.91-103.78,112.13-8.64,51.58,25.86,103.61,72.33,127.61s101.87,24.37,153.31,14.93,100.74-27.98,151.56-40.32c50.11-12.16,101.46-18.25,152.66-24.29"
+          />
+          <motion.path
+            key={`shadow2`}
+            id="shadows2"
+            initial={{ opacity: 0, pathLength: 0 }}
+            animate={
+              isInViewSVG
+                ? {
+                    opacity: 1,
+                    pathLength: 1,
+                    transition: {
+                      duration: 0.5,
+                      delay: 1,
+                      ease: "easeInOut",
+                    },
+                  }
+                : { opacity: 0, pathLength: 0 }
+            }
+            className="fill-none stroke-black stroke-[20]"
+            d="m644.66,146.34c14.3,17.87,38.29,23.89,58.96,33.73,13.52,6.44,26.1,14.88,37.18,24.96-8.09,10.9-20.84,17.15-33.12,22.93-16.28,7.67-32.62,15.21-49.02,22.64"
+          />
+        </svg>
+      </motion.div>
+      {/* </Link> */}
     </motion.div>
   );
 };

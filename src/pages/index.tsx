@@ -55,6 +55,13 @@ export default function Home() {
       color: "#8C8C8C",
       cursorText: "Sports",
       images: SportImages,
+      text: (
+        <>
+          <p>Ironman Lanzarote 2021</p>
+          <p>Ironman 70.3 Vietnam 2023 🥇</p>
+          <p>Ironman 70.3 World Championship 2023</p>
+        </>
+      ),
     },
     {
       title: "PC and keyboards",
@@ -62,6 +69,13 @@ export default function Home() {
       color: "#EFE8D3",
       cursorText: "Tech",
       images: TechImages,
+      text: (
+        <>
+          <p>Custom mechanical keyboards:</p>
+          <p>Iron 165 r2, vint black</p>
+          <p>Space65 r3, boba u4/u4t</p>
+        </>
+      ),
     },
     {
       title: "Travels",
@@ -69,6 +83,13 @@ export default function Home() {
       color: "#706D63",
       cursorText: "Travels",
       images: TravelImages,
+      text: (
+        <>
+          <p>Canada, USA</p>
+          <p>Vietnam, Philippines, Thailand</p>
+          <p>Spain, Italy, Finland, UK</p>
+        </>
+      ),
     },
   ]);
 

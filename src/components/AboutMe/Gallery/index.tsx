@@ -12,6 +12,7 @@ interface GalleryProps {
     color: string;
     cursorText: string;
     images: StaticImageData[];
+    text: JSX.Element;
   }[];
   setSections: React.Dispatch<
     React.SetStateAction<
@@ -21,6 +22,7 @@ interface GalleryProps {
         color: string;
         cursorText: string;
         images: StaticImageData[];
+        text: JSX.Element;
       }[]
     >
   >;
@@ -68,7 +70,7 @@ export default function Gallery({
       onMouseMove={(e) => {
         moveItems(e.clientX, e.clientY);
       }}
-      className="items-center flex-col pt-20 hidden lg:flex"
+      className="hidden flex-col items-center pt-20 lg:flex"
     >
       <div className="flex w-full flex-col items-center justify-center pb-24">
         {sections.map((section, index) => {
@@ -80,6 +82,7 @@ export default function Gallery({
               key={index}
               imageList={section.images}
               setMainImageSrc={setMainImageSrc}
+              text={section.text}
             />
           );
         })}
