@@ -43,7 +43,7 @@ export default function Footer() {
                 Let&#39;s work
               </h2>
             </span>
-            <h2 className="text-left text-7xl font-semibold">together</h2>
+            <h2 className="mt-0 text-left text-7xl font-semibold">together</h2>
             <Link href={"/contact"}>
               <motion.div
                 key={`footer_button`}

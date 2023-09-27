@@ -352,7 +352,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         }}
         className="relative flex w-full max-w-full cursor-pointer items-start justify-start gap-x-[2px] p-3 pr-4 text-sm font-bold text-black"
       >
-        <div>Check it out</div>
+        <div>Check it out (WIP)</div>
         <svg
           ref={containerSVG}
           id="Layer_3"

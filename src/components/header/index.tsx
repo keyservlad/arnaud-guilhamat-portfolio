@@ -16,7 +16,7 @@ const Header = () => {
   const router = useRouter();
   return (
     <>
-      <header className="flex bg-white text-black">
+      <header className="flex bg-white text-black font-normal">
         <div className="sticky bottom-auto top-0 z-[99] mx-auto flex min-h-[4vh] w-full items-center justify-between border-b border-slate-100 px-10">
           <Magnetic>
             <div className="">

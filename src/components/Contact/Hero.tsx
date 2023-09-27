@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div className="relative flex py-[21vh]">
       <div className="w-[73%] pr-16">
-        <h1 className="flex flex-col text-8xl font-semibold">
+        <h1 className="flex flex-col text-7xl font-semibold">
           <span className="text-5xl mb-2">Looks like you need some help!!!</span>
           <span>Reach Out!</span>
         </h1>
