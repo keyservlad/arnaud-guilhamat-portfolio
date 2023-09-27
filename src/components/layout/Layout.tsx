@@ -8,6 +8,8 @@ import Button from "../header/Button";
 import SidePanel from "../header/sidePanel";
 import { useAppContext } from "~/context/appContext";
 
+import { Analytics } from "@vercel/analytics/react";
+
 const Layout = (props: PropsWithChildren) => {
   const {
     isMenuOpen,
@@ -71,6 +73,7 @@ const Layout = (props: PropsWithChildren) => {
       <AnimatePresence mode="wait">
         {isMenuOpen && <SidePanel key={"sidePanel"} />}
       </AnimatePresence>
+      <Analytics />
     </>
   );
 };
