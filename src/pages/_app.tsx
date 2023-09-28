@@ -5,6 +5,7 @@ import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 
 import "~/public/styles/globals.css";
+import 'react-toastify/dist/ReactToastify.min.css';
 import Head from "next/head";
 import AppProvider from "~/context/appContext";
 

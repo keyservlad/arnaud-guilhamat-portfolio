@@ -9,6 +9,7 @@ import SidePanel from "../header/sidePanel";
 import { useAppContext } from "~/context/appContext";
 
 import { Analytics } from "@vercel/analytics/react";
+import { ToastContainer } from "react-toastify";
 
 const Layout = (props: PropsWithChildren) => {
   const {
@@ -74,6 +75,7 @@ const Layout = (props: PropsWithChildren) => {
         {isMenuOpen && <SidePanel key={"sidePanel"} />}
       </AnimatePresence>
       <Analytics />
+      <ToastContainer />
     </>
   );
 };

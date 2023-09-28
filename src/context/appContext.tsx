@@ -1,5 +1,6 @@
 import type LocomotiveScroll from "locomotive-scroll";
 import { createContext, useState, useEffect, useRef, useContext } from "react";
+import { toast } from "react-toastify";
 
 interface AppContextProps {
   isMenuOpen: boolean;
@@ -12,6 +13,7 @@ interface AppContextProps {
   scrollToId: (id: string) => void;
   setScrollRouting: React.Dispatch<React.SetStateAction<any>>;
   scrollRouting: string | null;
+  notify: () => void;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -43,6 +45,10 @@ export default function AppProvider({ children }: any) {
         duration: 3,
       });
     }
+  }
+
+  function notify() {
+    toast("Wow so easy !");
   }
 
   useEffect(() => {
@@ -85,6 +91,7 @@ export default function AppProvider({ children }: any) {
         scrollToId,
         setScrollRouting,
         scrollRouting,
+        notify,
       }}
     >
       {children}
