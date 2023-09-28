@@ -10,7 +10,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import axios from "axios";
-import { api } from "~/utils/api";
 import { useAppContext } from "~/context/appContext";
 
 const validationSchema = z.object({
@@ -55,12 +54,12 @@ export default function Form() {
     resolver: zodResolver(validationSchema),
   });
 
-  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
+  const onSubmit: SubmitHandler<ValidationSchema> = (data) => {
     setIsLoading(true);
     const message = data.message
       .split("\n")
       .map((line) => {
-        if (line == "") {
+        if (line === "") {
           // return "<br/>";
         } else {
           return "<p>" + line + "</p>";
@@ -68,38 +67,39 @@ export default function Form() {
       })
       .join("");
 
-    // try {
-    //   const resp = await axios("/api/send-mail", {
-    //     params: {
-    //       email: data.email,
-    //       subject: "Confirmation of receipt of your message",
-    //       message:
-    //         "<p>Here is a copy of the message sent. I will get back to you as soon as possible.</p>" +
-    //         message,
-    //     },
-    //   });
-    // } catch (error) {
-    //   setIsLoading(false);
-    //   console.log(error);
-    // }
+    try {
+      sendMail(
+        data.email,
+        "Confirmation of receipt of your message",
+        "<p>Here is a copy of the message sent. I will get back to you as soon as possible.</p>" +
+          message,
+      );
 
-    // try {
-    //   const resp = await axios("/api/send-mail", {
-    //     params: {
-    //       email: "arnaud.guilhamat@emovin.fr",
-    //       subject:
-    //         "contact depuis portfolio : " + data.name + " - " + data.email,
-    //       message: message,
-    //     },
-    //   });
-    // } catch (error) {
-    //   setIsLoading(false);
-    //   console.log(error);
-    // }
-    notify();
-    clearInputs();
-    setIsLoading(false);
+      sendMail(
+        "arnaud.guilhamat@emovin.fr",
+        "contact depuis portfolio : " + data.name + " - " + data.email,
+        message,
+      );
+
+      notify();
+      clearInputs();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+      return Promise.resolve();
+    }
   };
+
+  async function sendMail(email: string, subject: string, message: string) {
+    await axios("/api/send-mail", {
+      params: {
+        email: email,
+        subject: subject,
+        message: message,
+      },
+    });
+  }
 
   const clearInputs = () => {
     inputs.map((input) => {
