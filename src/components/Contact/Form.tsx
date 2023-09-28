@@ -54,7 +54,7 @@ export default function Form() {
     resolver: zodResolver(validationSchema),
   });
 
-  const onSubmit: SubmitHandler<ValidationSchema> = (data) => {
+  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     setIsLoading(true);
     const message = data.message
       .split("\n")
@@ -68,14 +68,14 @@ export default function Form() {
       .join("");
 
     try {
-      sendMail(
+      await sendMail(
         data.email,
         "Confirmation of receipt of your message",
         "<p>Here is a copy of the message sent. I will get back to you as soon as possible.</p>" +
           message,
       );
 
-      sendMail(
+      await sendMail(
         "arnaud.guilhamat@emovin.fr",
         "contact depuis portfolio : " + data.name + " - " + data.email,
         message,
