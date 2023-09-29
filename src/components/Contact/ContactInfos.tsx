@@ -66,7 +66,7 @@ export default function ContactInfos() {
           <Magnetic str={0.25}>
             <Link
               target="_blank"
-              href="https://github.com/keyservlad"
+              href="https://www.linkedin.com/in/arnaud-guilhamat"
               className="group relative mb-2 w-fit"
             >
               <p className="mb-1 cursor-pointer">LinkedIn</p>

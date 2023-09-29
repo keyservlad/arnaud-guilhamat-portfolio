@@ -26,7 +26,7 @@ export default function Footer() {
         <Magnetic>
           <Link
             target="_blank"
-            href="https://github.com/keyservlad"
+            href="https://www.linkedin.com/in/arnaud-guilhamat"
             className="group relative"
           >
             <p className="cursor-pointer">LinkedIn</p>

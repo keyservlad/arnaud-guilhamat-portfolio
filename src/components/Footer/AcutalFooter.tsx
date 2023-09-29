@@ -71,7 +71,7 @@ export default function ActualFooter() {
         <Magnetic>
           <Link
             target="_blank"
-            href="https://github.com/keyservlad"
+            href="https://www.linkedin.com/in/arnaud-guilhamat"
             className="hover group"
           >
             <p className="cursor-pointer">LinkedIn</p>
