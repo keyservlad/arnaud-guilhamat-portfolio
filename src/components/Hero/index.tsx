@@ -30,7 +30,7 @@ const Hero = () => {
             Hi! my name is Arnaud Guilhamat & I am a
           </h4>
           <TypingText text={"Fullstack developer"} />
-          <p className="mb-5 text-left md:mb-[10px] md:text-center lg:text-left">
+          <p className="mb-5 text-left md:text-center lg:text-left">
             Crafting Exceptional Digital Experiences. Transforming Complex
             Problems into Simple Solutions.
           </p>
