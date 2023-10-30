@@ -40,7 +40,7 @@ const BuildSomething = () => {
             ))}
           </motion.h2>
           <motion.p
-            className="max-w-2xl py-2 text-center leading-loose"
+            className="max-w-2xl py-2 text-center leading-relaxed"
             variants={FADE_UP_ANIMATION_VARIANTS}
             initial="hidden"
             ref={containerRefPara}

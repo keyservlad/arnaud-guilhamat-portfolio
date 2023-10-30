@@ -57,7 +57,7 @@ const BuildSomething = () => {
             ))}
           </motion.h2>
           <motion.p
-            className="max-w-2xl py-2 text-center leading-loose"
+            className="max-w-2xl py-2 text-center leading-relaxed"
             variants={FADE_UP_ANIMATION_VARIANTS}
             initial="hidden"
             ref={containerRef2}
@@ -88,7 +88,7 @@ const BuildSomething = () => {
             <span className="font-bold">software engineering.</span>
           </motion.p>
           <motion.p
-            className="max-w-2xl py-2 text-center leading-loose"
+            className="max-w-2xl py-2 text-center leading-relaxed"
             variants={FADE_UP_ANIMATION_VARIANTS}
             initial="hidden"
             ref={containerRef3}
@@ -101,7 +101,7 @@ const BuildSomething = () => {
             <span className="font-bold">simplifying complex problems.</span>
           </motion.p>
           <motion.p
-            className="max-w-2xl py-2 text-center leading-loose"
+            className="max-w-2xl py-2 text-center leading-relaxed"
             variants={FADE_UP_ANIMATION_VARIANTS}
             initial="hidden"
             ref={containerRef4}
@@ -120,7 +120,7 @@ const BuildSomething = () => {
             of our complex website and all related IT aspects.
           </motion.p>
           <motion.p
-            className="max-w-2xl py-2 text-center leading-loose"
+            className="max-w-2xl py-2 text-center leading-relaxed"
             variants={FADE_UP_ANIMATION_VARIANTS}
             initial="hidden"
             ref={containerRef5}
@@ -137,7 +137,7 @@ const BuildSomething = () => {
             <span className="italic">not everyone speaks our language!</span>
           </motion.p>
           <motion.p
-            className="max-w-2xl py-2 text-center leading-loose"
+            className="max-w-2xl py-2 text-center leading-relaxed"
             variants={FADE_UP_ANIMATION_VARIANTS}
             initial="hidden"
             ref={containerRef6}
