@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ContactInfos() {
   return (
-    <div className="relative flex w-[27%] flex-col pl-16 text-base font-medium">
+    <div className="relative flex lg:w-[27%] flex-col lg:pl-16 text-base font-medium mx-[12vw] lg:mx-auto">
       <div className="pb-12">
         <h5 className="mb-3 text-xs font-medium uppercase opacity-50 ">
           Contact details
@@ -41,7 +41,7 @@ export default function ContactInfos() {
           </Magnetic>
         </div>
       </div>
-      <div className="pb-12">
+      <div className="pb-12 lg:flex hidden flex-col">
         <h5 className="mb-3 text-xs font-medium uppercase opacity-50 ">
           Socials
         </h5>

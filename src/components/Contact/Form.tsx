@@ -113,7 +113,7 @@ export default function Form() {
   };
 
   return (
-    <div className="w-[73%] pr-16">
+    <div className="mx-[12vw] lg:mx-auto lg:w-[73%] lg:pr-16">
       <form
         data-scroll-section
         onSubmit={handleSubmit(onSubmit)}
@@ -143,7 +143,7 @@ export default function Form() {
             <Rounded
               backgroundColor={"#334BD3"}
               backgroundColorHover={"#455CE9"}
-              style={`relative flex h-44 w-44 items-center justify-center overflow-hidden rounded-full text-white z-10 ${
+              style={`relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full text-white z-10 ${
                 isLoading ? "cursor-wait" : "cursor-pointer"
               }}`}
             >
