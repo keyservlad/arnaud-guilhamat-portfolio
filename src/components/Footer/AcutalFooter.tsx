@@ -32,7 +32,7 @@ export default function ActualFooter() {
   }, []);
 
   return (
-    <footer className="mt-32 flex flex-col-reverse justify-between p-5 sm:flex-row">
+    <footer className="mt-5 lg:mt-14 flex flex-col-reverse justify-between p-5 sm:flex-row">
       <div className="mt-3 flex items-end justify-between gap-6 border-t border-[#999999] border-opacity-40 pt-3 sm:justify-normal sm:border-0 sm:p-0">
         <span className="flex flex-col gap-4">
           <h3 className="m-0 cursor-text p-0.5 text-[1em] font-light text-gray-500">
