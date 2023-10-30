@@ -55,12 +55,24 @@ export default function AppProvider({ children }: any) {
     (async () => {
       if (!locomotiveScrollRef.current) {
         const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        locomotiveScrollRef.current = new LocomotiveScroll({
-          lenisOptions: {
-            touchMultiplier: 1.5,
-            smoothTouch: true,
-          },
-        });
+
+        if (window.innerWidth < 1024) {
+          locomotiveScrollRef.current = new LocomotiveScroll({
+            lenisOptions: {
+              touchMultiplier: 1.3,
+              smoothTouch: true,
+              duration: 1.2,
+            },
+          });
+        } else {
+          locomotiveScrollRef.current = new LocomotiveScroll({
+            lenisOptions: {
+              touchMultiplier: 1.3,
+              smoothTouch: true,
+              duration: 0.4,
+            },
+          });
+        }
       }
       disableScroll();
     })();
